@@ -56,6 +56,24 @@ body {
     margin-top: 4px;
 }
 
+/* ===== 统计细分卡片 ===== */
+.stat-detail {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin: 0 0 25px;
+}
+.stat-box {
+    background: #f8f9fa;
+    border-radius: 8px; padding: 12px 14px;
+    text-align: center;
+}
+.stat-box .stat-val {
+    font-size: 24px; font-weight: 700;
+    color: #07c160; line-height: 1.2;
+}
+.stat-box .stat-lbl {
+    font-size: 11px; color: #999; margin-top: 2px;
+}
+
 /* ===== 分区标题 ===== */
 .section-title {
     display: flex; align-items: center;
@@ -99,6 +117,9 @@ body {
 .tag-reply {
     background-color: #f0f0f0; color: #666;
 }
+.tag-column {
+    background-color: #1890ff; color: #fff;
+}
 
 /* 时间标签 */
 .time-tag {
@@ -108,9 +129,11 @@ body {
     font-variant-numeric: tabular-nums;
     margin-right: 6px; vertical-align: middle;
 }
-.time-relative {
-    font-size: 11px; color: #bbb;
-    font-weight: 400;
+
+/* 回复对象 */
+.reply-to {
+    font-size: 12px; color: #576b95;
+    font-weight: 500; margin-right: 6px;
 }
 
 /* 帖子正文 */
@@ -118,19 +141,6 @@ body {
     font-size: 15px; line-height: 1.75;
     color: #333; margin: 10px 0 0;
     word-break: break-word;
-}
-.post-text .reply-target {
-    color: #576b95; font-weight: 500;
-}
-
-/* 图片标记 */
-.image-badge {
-    display: inline-flex; align-items: center;
-    font-size: 12px; color: #999;
-    margin-top: 8px;
-}
-.image-badge::before {
-    content: "📷"; margin-right: 3px; font-size: 13px;
 }
 
 /* ===== 回帖卡片 ===== */
@@ -146,57 +156,46 @@ body {
     font-size: 14px; color: #555;
 }
 
-/* ===== 持仓信号 ===== */
-.holding-signal {
-    background: #fff8f0;
-    border: 1px solid #ffe0b2;
+/* ===== 分类摘要卡片 ===== */
+.category-card {
+    background: #f8f9fa;
     border-radius: 8px;
-    padding: 12px 14px;
+    padding: 14px 16px;
     margin-bottom: 10px;
 }
-.holding-signal .signal-header {
-    display: flex; align-items: center;
-    margin-bottom: 6px;
+.category-card .cat-title {
+    font-size: 15px; font-weight: 700;
+    color: #1a1a1a; margin-bottom: 8px;
 }
-.signal-icon { font-size: 14px; margin-right: 4px; }
-.signal-label {
-    font-size: 12px; font-weight: 700;
-    color: #e65100; text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.signal-stock {
-    font-size: 16px; font-weight: 700;
-    color: #e65100; margin-bottom: 2px;
-}
-.signal-action {
-    display: inline-block;
-    font-size: 11px; font-weight: 600;
-    padding: 1px 8px; border-radius: 3px;
-    margin-right: 4px;
-}
-.action-buy { background: #ffe0b2; color: #e65100; }
-.action-sell { background: #c8e6c9; color: #2e7d32; }
-.action-hold { background: #e3f2fd; color: #1565c0; }
-.signal-confidence {
-    font-size: 11px; color: #999;
-}
-.signal-source {
+.category-card .cat-desc {
     font-size: 13px; color: #666;
-    margin-top: 4px; line-height: 1.5;
-    border-left: 2px solid #ffe0b2;
-    padding-left: 8px;
+    line-height: 1.7;
 }
+.cat-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 600;
+    padding: 1px 6px; border-radius: 3px;
+    margin-right: 4px; color: #fff;
+    vertical-align: middle;
+}
+.cat-tag-ai { background: #722ed1; }
+.cat-tag-mi { background: #fa8c16; }
+.cat-tag-comp { background: #eb2f96; }
+.cat-tag-macro { background: #13c2c2; }
 
-/* ===== 无数据 ===== */
-.empty-state {
-    text-align: center;
-    padding: 40px 20px; color: #ccc;
+/* ===== 链接按钮 ===== */
+.post-link {
+    display: inline-block;
+    font-size: 11px; color: #07c160;
+    text-decoration: none;
+    margin-top: 6px;
+    padding: 2px 6px;
+    border: 1px solid #07c160;
+    border-radius: 4px;
+    transition: all 0.2s;
 }
-.empty-state .empty-icon {
-    font-size: 48px; margin-bottom: 12px;
-}
-.empty-state .empty-text {
-    font-size: 14px;
+.post-link:hover {
+    background: #07c160; color: #fff;
 }
 
 /* ===== 分隔线 ===== */
@@ -224,28 +223,34 @@ body {
     line-height: 1.6;
 }
 
-/* ===== 互动条 ===== */
-.interaction-bar {
-    display: flex; gap: 15px;
-    margin-top: 10px;
-    font-size: 12px; color: #999;
+/* ===== 情绪画像 ===== */
+.mood-card {
+    background: linear-gradient(135deg, #fff7e6, #fff);
+    border: 1px solid #ffd591;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
 }
-.interaction-item { display: flex; align-items: center; gap: 3px; }
-.interaction-icon { font-size: 13px; }
+.mood-card .mood-title {
+    font-size: 14px; font-weight: 700;
+    color: #d46b08; margin-bottom: 6px;
+}
+.mood-card .mood-text {
+    font-size: 13px; color: #666; line-height: 1.7;
+}
 </style>
 </head>
 <body>
     <div class="container">
-        
+
     <div class="header">
         <div class="header-title">📊 CobraAntony · 每日动态</div>
         <div class="header-sub">
-            <span>2026-06-14</span>
+            <span>2026-06-14（周日）</span>
             <span>|</span>
             <span>雪球 ID: 5068022281</span>
         </div>
     </div>
-    
 
     <div class="overview">
         <div class="overview-item">
@@ -253,90 +258,224 @@ body {
             <div class="overview-label">发帖</div>
         </div>
         <div class="overview-item">
-            <div class="overview-num">3</div>
+            <div class="overview-num">6</div>
             <div class="overview-label">回帖</div>
         </div>
         <div class="overview-item">
-            <div class="overview-num">5</div>
+            <div class="overview-num">8</div>
             <div class="overview-label">总互动</div>
         </div>
         <div class="overview-item">
-            <div class="overview-num">0</div>
-            <div class="overview-label">持仓信号</div>
+            <div class="overview-num">3</div>
+            <div class="overview-label">互动用户</div>
         </div>
     </div>
-    
 
-        <div class="section-title">
-            <span class="dot"></span>
-            今日发帖
-            <span class="section-count">共 2 条</span>
+    <!-- 统计细分 -->
+    <div class="stat-detail">
+        <div class="stat-box">
+            <div class="stat-val">07:14–13:12</div>
+            <div class="stat-lbl">活跃时段（6小时）</div>
         </div>
-        
-
-            <div class="post-card">
-                <div>
-                    <span class="post-type-tag tag-post">发帖</span>
-                    <span class="time-tag">2026-06-14 08:08:00</span>
-                </div>
-                <div class="post-text">回溯AI的发展两年，2024年的GPT引领人工智能大模型的发展进入了高潮，然后百度文心大模型。2025年1月DS中国的国产概念大模型基底爆发...2026年一路传导了供应链，芯片，半导体...</div>
-                
-            </div>
-            
-
-            <div class="post-card">
-                <div>
-                    <span class="post-type-tag tag-post">发帖</span>
-                    <span class="time-tag">2026-06-14 13:12:00</span>
-                </div>
-                <div class="post-text">应该是真谈成了！WTI原油期货跌幅扩大至5%，报80.53美元/桶。消息面上，特朗普称美伊达成和平协议。</div>
-                
-            </div>
-            
-
-        <div class="section-title">
-            <span class="dot"></span>
-            今日回帖
-            <span class="section-count">共 3 条</span>
+        <div class="stat-box">
+            <div class="stat-val">小米×5 / 阿里×4</div>
+            <div class="stat-lbl">最热标的</div>
         </div>
-        
+        <div class="stat-box">
+            <div class="stat-val">~2,200字</div>
+            <div class="stat-lbl">当日总字数</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-val">大湾区船王×4</div>
+            <div class="stat-lbl">最热对话</div>
+        </div>
+    </div>
 
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 11:07:00</span>
-                </div>
-                <div class="post-text">回复 大湾区船王: 我阿里的成本70，小米的成本17.25，第3轮的成本37.88，100元的价格买入阿里是一个不错的时机，但不是一个最好的时间，最好的时机是80以下。</div>
-            </div>
-            
+    <!-- ==================== 发言分类概要 ==================== -->
+    <div class="section-title">
+        <span class="dot"></span>
+        发言分类概要
+        <span class="section-count">4 个主题方向</span>
+    </div>
 
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 11:53:00</span>
-                </div>
-                <div class="post-text">回复 大湾区船王: 高强度投入是前期的，又不是永久的。阿里巴巴在股价100区间的时候它就不卷了吗？中国有哪个行业是不卷的？</div>
-            </div>
-            
+    <div class="category-card">
+        <div class="cat-title"><span class="cat-tag cat-tag-ai">AI产业</span> 下一浪AI应用的爆发，来源于商业化！</div>
+        <div class="cat-desc">
+            ⏰ 10:21 发帖（专栏长文，配图7张）<br>
+            核心判断：AI大模型进入商业化拐点期——技术优化边际弱化，下半场看变现能力。科技三叉戟（腾讯社交/阿里云服务/小米AIoT）被严重低估，对比SpaceX AI估值，国内科技大厂"连学渣都不算"。
+            <a class="post-link" href="https://xueqiu.com/5068022281/394629669">查看原文 →</a>
+        </div>
+    </div>
 
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 12:44:00</span>
-                </div>
-                <div class="post-text">回复 大湾区船王: 你的心在变，我的没有，无论清仓没有清仓小米，我仍然是那个资深的米粉。</div>
-            </div>
-            
+    <div class="category-card">
+        <div class="cat-title"><span class="cat-tag cat-tag-mi">小米辩护</span> 品牌与持仓信念（3条回帖）</div>
+        <div class="cat-desc">
+            面对@股海无涯zzh 和@大湾区船王 对小米品牌、IoT壁垒的质疑，CobraAntony 强硬回击：<br>
+            ✅ 亮成本底牌：小米17.25港元，涨幅500%+<br>
+            ✅ AIoT场景化论证：车机人脸识别→咖啡下单→回家开空调全链路<br>
+            ✅ 长期信仰宣言："六年三轮翻三倍，时间会给予答案"
+        </div>
+    </div>
+
+    <div class="category-card">
+        <div class="cat-title"><span class="cat-tag cat-tag-comp">竞争辩论</span> 字节vs阿里腾讯（3条回帖）</div>
+        <div class="cat-desc">
+            与@大湾区船王 围绕字节威胁论展开4轮辩论：<br>
+            🔹 否认字节威胁："字节做到的阿里都做到，云服务芯片阿里更强"<br>
+            🔹 修正赢家通吃叙事：豆包手机已失败、微信视频号反超<br>
+            🔹 终极回应：中国所有行业都卷，"不卷只是暂时不卷"
+        </div>
+    </div>
+
+    <div class="category-card">
+        <div class="cat-title"><span class="cat-tag cat-tag-macro">宏观点评</span> 美伊协议签署</div>
+        <div class="cat-desc">
+            ⏰ 08:08 发帖<br>
+            "好像有50次了吧😅"——调侃特朗普声称美伊和平协议的反复无常，隐含对油价/能源股的短期谨慎。
+            <a class="post-link" href="https://xueqiu.com/5068022281/394622873">查看原文 →</a>
+        </div>
+    </div>
+
+    <!-- ==================== 全部发言列表 ==================== -->
+    <hr class="divider">
+
+    <div class="section-title">
+        <span class="dot"></span>
+        全部发言
+        <span class="section-count">按时间倒序 · 共 8 条</span>
+    </div>
+
+    <!-- 回帖 #6 -->
+    <div class="reply-card">
+        <div>
+            <span class="post-type-tag tag-reply">回帖</span>
+            <span class="time-tag">13:12:00</span>
+            <span class="reply-to">回复 @大湾区船王</span>
+        </div>
+        <div class="post-text">
+            你的心在变，我的没有，无论清仓，没有清仓小米，我仍然是那个资深的米粉……上两轮翻了三倍，可是用了六年时间，所以时间会给予答案。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394639961">查看原文 →</a>
+    </div>
+
+    <!-- 回帖 #5 -->
+    <div class="reply-card">
+        <div>
+            <span class="post-type-tag tag-reply">回帖</span>
+            <span class="time-tag">12:44:00</span>
+            <span class="reply-to">回复 @大湾区船王</span>
+        </div>
+        <div class="post-text">
+            高强度投入是前期的，又不是永久的。中国有哪个行业是不卷的？我们这个产能充足的国家，所有行业都卷，如果不卷，只是暂时不卷。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394638494">查看原文 →</a>
+    </div>
+
+    <!-- 回帖 #4 -->
+    <div class="reply-card">
+        <div>
+            <span class="post-type-tag tag-reply">回帖</span>
+            <span class="time-tag">11:53:00</span>
+            <span class="reply-to">回复 @大湾区船王</span>
+        </div>
+        <div class="post-text">
+            豆包手机失败了。AI更多应用在云服务和商业领域。中国这么大的市场，人工智能的龙头有几家很正常，不是你死就是我亡，不存在的。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394635769">查看原文 →</a>
+    </div>
+
+    <!-- 回帖 #3 -->
+    <div class="reply-card">
+        <div>
+            <span class="post-type-tag tag-reply">回帖</span>
+            <span class="time-tag">11:07:00</span>
+            <span class="reply-to">回复 @大湾区船王</span>
+        </div>
+        <div class="post-text">
+            我阿里的成本70，小米的成本17.25，第3轮的成本37.88。字节的人工智能做到的，阿里巴巴都做到，特别是在云服务芯片，阿里更强。我并不认为你的头条威胁逻辑成立。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394632707">查看原文 →</a>
+    </div>
+
+    <!-- 发帖 #2 -->
+    <div class="post-card">
+        <div>
+            <span class="post-type-tag tag-column">专栏</span>
+            <span class="time-tag">10:21:00</span>
+        </div>
+        <div class="post-text">
+            <strong>下一浪AI应用的爆发，来源于商业化！</strong><br>
+            回溯AI发展：GPT→国产DS→供应链全面爆发。核心判断：认知大模型进入商业化拐点，"没有商业化进程，硬件需求也会边际钝化"。科技三叉戟（腾讯/阿里/小米）被严重低估——"SpaceX因AI估值上天，国内科技大厂连学渣都不算"。
+        </div>
+        <div style="font-size:11px;color:#999;margin-top:6px;">📷 配图 7 张</div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394629669">查看原文 →</a>
+    </div>
+
+    <!-- 发帖 #1 -->
+    <div class="post-card">
+        <div>
+            <span class="post-type-tag tag-post">发帖</span>
+            <span class="time-tag">08:08:00</span>
+        </div>
+        <div class="post-text">
+            好像有50次了吧😅 —— 引用特朗普声称美伊协议计划14日签署的消息，调侃反复无常。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394622873">查看原文 →</a>
+    </div>
+
+    <!-- 回帖 #2 -->
+    <div class="reply-card">
+        <div>
+            <span class="post-type-tag tag-reply">回帖</span>
+            <span class="time-tag">07:17:00</span>
+            <span class="reply-to">回复 @股海无涯zzh</span>
+            <span style="font-size:10px;color:#bbb;">（修改时间）</span>
+        </div>
+        <div class="post-text">
+            我们可以不用手机控制，可以用智能音响、电视控制——车机调用家里摄像头、人脸识别解锁手机、AI下单咖啡、回家前5分钟开空调……没有大模型的加持，就像缺了个大脑。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394610291">查看原文 →</a>
+    </div>
+
+    <!-- 回帖 #1 -->
+    <div class="reply-card">
+        <div>
+            <span class="post-type-tag tag-reply">回帖</span>
+            <span class="time-tag">07:14:00</span>
+            <span class="reply-to">回复 @股海无涯zzh</span>
+            <span style="font-size:10px;color:#bbb;">（修改时间）</span>
+        </div>
+        <div class="post-text">
+            你肯定急了。大家都知道我成本17.25，利润厚着。我小米好歹这两年涨过500%，我还有大量利润在手，目前基本还是雷总送的。你这两年亏损怎么样？把收益率发给我看看。
+        </div>
+        <a class="post-link" href="https://xueqiu.com/5068022281/394611124">查看原文 →</a>
+    </div>
+
+    <!-- ==================== 情绪与立场画像 ==================== -->
+    <div class="section-title">
+        <span class="dot"></span>
+        情绪与立场画像
+    </div>
+
+    <div class="mood-card">
+        <div class="mood-title">🟢 自信坚定 · 略带战斗姿态</div>
+        <div class="mood-text">
+            <strong>核心持仓信仰</strong>：小米+阿里+腾讯"科技三叉戟"，以年级别持有<br>
+            <strong>AI产业观点</strong>：长期乐观（5-10年），短期关注商业化拐点<br>
+            <strong>面对质疑的应对</strong>：亮持仓成本/收益率 → 场景化实证 → 上升至长期信仰<br>
+            <strong>当日关键词</strong>：AI商业化、小米IoT、成本底牌、字节威胁论、内卷常态化
+        </div>
+    </div>
 
     <hr class="divider">
     <div class="footer">
         <div class="footer-logo">🔴 XUEQIU TRACKER</div>
         <div class="footer-text">
-            数据来源：雪球公开页面 · 仅供参考，不构成投资建议<br>
-            持仓信号由 AI 分析推断，不等于真实持仓
+            数据来源：雪球公开页面 · 生成时间：2026-06-15 14:31 GMT+8<br>
+            仅供参考，不构成投资建议 · 持仓信号由 AI 分析推断，不等于真实持仓
         </div>
     </div>
-    
+
     </div>
 </body>
 </html>
