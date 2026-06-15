@@ -3,72 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>飞翔芸 - 雪球日报 2026年6月15日</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #f5f7fa; color: #1a1a2e; line-height: 1.7; padding: 20px;
-}}
-.container {{ max-width: 800px; margin: 0 auto; }}
-.header {{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff; border-radius: 16px; padding: 30px; margin-bottom: 24px;
+<title>飞翔芸 - 每日动态 - 2026-06-15</title>
+<style>/* ===== 全局 ===== */
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #333; font-size: 15px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+.container {
+    max-width: 640px; margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+/* ===== 头部 ===== */
+.header {
     text-align: center;
-}}
-.header h1 {{ font-size: 24px; margin-bottom: 8px; }}
-.header .date {{ font-size: 14px; opacity: 0.9; }}
-.header .user-id {{ font-size: 12px; opacity: 0.7; margin-top: 4px; }}
-.overview {{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px; padding: 24px; margin-bottom: 24px; color: #fff;
-    display: flex; justify-content: space-around; text-align: center;
-}}
-.overview-item {{ flex: 1; }}
-.overview-num {{ font-size: 32px; font-weight: bold; }}
-.overview-label {{ font-size: 13px; opacity: 0.85; margin-top: 4px; }}
-.category-card {{
-    background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px;
-    border-left: 4px solid #667eea;
-}}
-.category-card h3 {{ font-size: 16px; color: #667eea; margin-bottom: 8px; }}
-.category-card p {{ font-size: 14px; color: #555; }}
-.mood-card {{
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; color: #fff;
-}}
-.mood-card h3 {{ font-size: 15px; margin-bottom: 4px; }}
-.mood-card p {{ font-size: 13px; opacity: 0.9; }}
-.section-title {{ font-size: 18px; font-weight: 600; margin: 24px 0 16px; color: #333; }}
-.post-card {{
-    background: #fff; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}}
-.post-header {{ display: flex; align-items: center; margin-bottom: 8px; }}
-.tag {{ font-size: 11px; padding: 2px 10px; border-radius: 20px; font-weight: 600; }}
-.post-tag {{ background: #e8f5e9; color: #2e7d32; }}
-.reply-tag {{ background: #fff3e0; color: #e65100; }}
-.time {{ font-size: 12px; color: #999; margin-left: 10px; }}
-.post-content {{ font-size: 14px; color: #333; line-height: 1.6; }}
-.reply-to {{ font-size: 13px; color: #667eea; margin-bottom: 4px; }}
-.reply-card {{ border-left: 3px solid #ff9800; }}
-.inactive-banner {{
-    background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
-    border-radius: 16px; padding: 40px; margin-bottom: 24px; text-align: center; color: #fff;
-}}
-.inactive-banner h2 {{ font-size: 22px; margin-bottom: 8px; }}
-.inactive-banner p {{ font-size: 14px; opacity: 0.85; }}
-.footer {{ text-align: center; font-size: 12px; color: #999; margin-top: 32px; padding: 16px; }}
-.footer a {{ color: #667eea; text-decoration: none; }}
-</style>
+    padding: 20px 0 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+}
+.header-title {
+    font-size: 22px; font-weight: 700;
+    color: #1a1a1a; margin: 0 0 8px;
+    letter-spacing: 0.5px;
+}
+.header-sub {
+    font-size: 13px; color: #999;
+    margin: 0;
+}
+.header-sub span { margin: 0 6px; }
+
+/* ===== 概览卡片 ===== */
+.overview {
+    display: flex; justify-content: space-around;
+    background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
+    border-radius: 10px; padding: 20px 15px;
+    margin: 0 0 25px; color: #fff;
+    box-shadow: 0 4px 15px rgba(7,193,96,0.3);
+}
+.overview-item { text-align: center; flex: 1; }
+.overview-num {
+    font-size: 32px; font-weight: 700;
+    line-height: 1.2;
+}
+.overview-label {
+    font-size: 12px; opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* ===== 统计细分卡片 ===== */
+.stat-detail {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin: 0 0 25px;
+}
+.stat-box {
+    background: #f8f9fa;
+    border-radius: 8px; padding: 12px 14px;
+    text-align: center;
+}
+.stat-box .stat-val {
+    font-size: 24px; font-weight: 700;
+    color: #07c160; line-height: 1.2;
+}
+.stat-box .stat-lbl {
+    font-size: 11px; color: #999; margin-top: 2px;
+}
+
+/* ===== 分区标题 ===== */
+.section-title {
+    display: flex; align-items: center;
+    margin: 25px 0 15px; font-size: 17px; font-weight: 700;
+    color: #1a1a1a;
+}
+.section-title .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background-color: #07c160; margin-right: 8px;
+    flex-shrink: 0;
+}
+.section-count {
+    font-size: 12px; color: #999; font-weight: 400;
+    margin-left: 8px;
+}
+
+/* ===== 帖子卡片 ===== */
+.post-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px 16px;
+    margin-bottom: 12px;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+.post-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* 帖子类型标签 */
+.post-type-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 3px;
+    margin-right: 6px; vertical-align: middle;
+}
+.tag-post {
+    background-color: #07c160; color: #fff;
+}
+.tag-reply {
+    background-color: #f0f0f0; color: #666;
+}
+.tag-column {
+    background-color: #1890ff; color: #fff;
+}
+
+/* 时间标签 */
+.time-tag {
+    display: inline-block;
+    font-size: 12px; color: #07c160;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px; vertical-align: middle;
+}
+
+/* 回复对象 */
+.reply-to {
+    font-size: 12px; color: #576b95;
+    font-weight: 500; margin-right: 6px;
+}
+
+/* 帖子正文 */
+.post-text {
+    font-size: 15px; line-height: 1.75;
+    color: #333; margin: 10px 0 0;
+    word-break: break-word;
+}
+
+/* ===== 回帖卡片 ===== */
+.reply-card {
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-left: 3px solid #07c160;
+}
+.reply-card .post-text {
+    font-size: 14px; color: #555;
+}
+
+/* ===== 分类摘要卡片 ===== */
+.category-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+.category-card .cat-title {
+    font-size: 15px; font-weight: 700;
+    color: #1a1a1a; margin-bottom: 8px;
+}
+.category-card .cat-desc {
+    font-size: 13px; color: #666;
+    line-height: 1.7;
+}
+.cat-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 600;
+    padding: 1px 6px; border-radius: 3px;
+    margin-right: 4px; color: #fff;
+    vertical-align: middle;
+}
+.cat-tag-ai { background: #722ed1; }
+.cat-tag-mi { background: #fa8c16; }
+.cat-tag-comp { background: #eb2f96; }
+.cat-tag-macro { background: #13c2c2; }
+
+/* ===== 链接按钮 ===== */
+.post-link {
+    display: inline-block;
+    font-size: 11px; color: #07c160;
+    text-decoration: none;
+    margin-top: 6px;
+    padding: 2px 6px;
+    border: 1px solid #07c160;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.post-link:hover {
+    background: #07c160; color: #fff;
+}
+
+/* ===== 分隔线 ===== */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #07c160, transparent);
+    margin: 25px 0;
+    border: none;
+}
+
+/* ===== 底部 ===== */
+.footer {
+    text-align: center;
+    padding: 20px 0 10px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+}
+.footer-logo {
+    font-size: 14px; color: #07c160;
+    font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+.footer-text {
+    font-size: 11px; color: #bbb;
+    line-height: 1.6;
+}
+
+/* ===== 情绪画像 ===== */
+.mood-card {
+    background: linear-gradient(135deg, #fff7e6, #fff);
+    border: 1px solid #ffd591;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+.mood-card .mood-title {
+    font-size: 14px; font-weight: 700;
+    color: #d46b08; margin-bottom: 6px;
+}
+.mood-card .mood-text {
+    font-size: 13px; color: #666; line-height: 1.7;
+}</style>
 </head>
 <body>
 <div class="container">
-<div class="header"><h1>飞翔芸</h1><div class="date">2026年6月15日 - 雪球日报</div><div class="user-id">雪球ID: 9957341637</div></div><div class="overview"><div class="overview-item"><div class="overview-num">2</div><div class="overview-label">发帖</div></div><div class="overview-item"><div class="overview-num">4</div><div class="overview-label">回复</div></div><div class="overview-item"><div class="overview-num">6</div><div class="overview-label">合计</div></div></div><div class="category-card"><h3>[发言分类]</h3><p>紫金矿业 - 美伊战争利好有色 - 投资心态辩论</p></div><div class="mood-card"><h3>[情绪画像]</h3><p>自信张扬，坚定看好紫金矿业和有色板块</p></div><div class="section-title">[当日发言记录]</div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 12:08:00</span></div><div class="post-content">老木匠就是有强迫症，我己经给他诊断过了！</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 16:45:04</span></div><div class="post-content">$紫金矿业(SH601899)$ 这是我第三次强调，美伊战争现在对紫金矿业来说就是利好，也是全球矿产格局重塑的关键一步！</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 12:33:00</span></div><div class="reply-to">-> <strong>@炒股不如卖红薯</strong></div><div class="post-content">买什么股票都可以是个人投资视角的问题，关键是你有这种想法，就很难达到几亿市值。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 12:40:52</span></div><div class="reply-to">-> <strong>@云山月</strong></div><div class="post-content">看空当然是自由，许我看多就许别人看空。我说的与股价涨跌无关。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 12:44:20</span></div><div class="reply-to">-> <strong>@skjhha</strong></div><div class="post-content">刀仔比木匠可爱多了，真实多了！虽然我不怎么认同他的操作。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 12:47:45</span></div><div class="reply-to">-> <strong>@棉毛衫</strong></div><div class="post-content">兄弟说出我想说的话！</div></div>
-    <div class="footer">
-        <p>数据来源：<a href="https://xueqiu.com/u/9957341637" target="_blank">雪球 - 飞翔芸</a> | 抓取时间：2026-06-15 14:12 GMT+8</p>
-        <p><a href="https://cong30.github.io/xueqiu-reports/" target="_blank">返回总览</a></p>
-    </div>
+
+<div class="header">
+    <div class="header-title">飞翔芸 - 每日动态</div>
+    <div class="header-sub"><span>2026-06-15</span><span>|</span><span>雪球 ID: 9957341637</span></div>
+</div>
+
+<div class="overview">
+    <div class="overview-item"><div class="overview-num">2</div><div class="overview-label">发帖</div></div>
+    <div class="overview-item"><div class="overview-num">4</div><div class="overview-label">回帖</div></div>
+    <div class="overview-item"><div class="overview-num">6</div><div class="overview-label">总互动</div></div>
+</div>
+
+<div class="stat-detail"><div class="stat-box"><div class="stat-val">12:08-16:45</div><div class="stat-lbl">活跃时段</div></div><div class="stat-box"><div class="stat-val">紫金矿业</div><div class="stat-lbl">最热标的</div></div><div class="stat-box"><div class="stat-val">~350字</div><div class="stat-lbl">当日总字数</div></div><div class="stat-box"><div class="stat-val">4位不同用户</div><div class="stat-lbl">最热对话</div></div></div>
+
+<div class="section-title"><span class="dot"></span>发言分类概要<span class="section-count">2 个主题方向</span></div>
+
+<div class="category-card"><div class="cat-title"><span class="cat-tag cat-tag-zijin">紫金</span> 紫金矿业利好逻辑（1条发帖）</div><div class="cat-desc">⏰ 16:45 发帖<br>“这是我第三次强调，美伊战争现在对紫金矿业来说就是利好，也是全球矿产格局重塑的关键一步！” —— 坚定看多，逻辑清晰。</div></div><div class="category-card"><div class="cat-title"><span class="cat-tag cat-tag-energy">心态</span> 投资心态与多空辩论（4条回复）</div><div class="cat-desc">⏰ 12:08-12:47<br>调侃“老木匠有强迫症”，回应看空者“许我看多就许别人看空”。强调投资格局决定财富高度——“有这种想法，就很难达到几亿市值”。</div></div>
+
+<hr class="divider">
+
+<div class="section-title"><span class="dot"></span>全部发言<span class="section-count">按时间倒序 - 共 6 条</span></div>
+
+<div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">16:45</span></div><div class="post-text">$紫金矿业(SH601899)$ 这是我第三次强调，美伊战争现在对紫金矿业来说就是利好，也是全球矿产格局重塑的关键一步！</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">12:47</span><span class="reply-to">回复 @棉毛衫</span></div><div class="post-text">兄弟说出我想说的话！</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">12:44</span><span class="reply-to">回复 @skjhha</span></div><div class="post-text">刀仔比木匠可爱多了，真实多了！虽然我不怎么认同他的操作。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">12:40</span><span class="reply-to">回复 @云山月</span></div><div class="post-text">看空当然是自由，许我看多就许别人看空。我说的与股价涨跌无关。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">12:33</span><span class="reply-to">回复 @炒股不如卖红薯</span></div><div class="post-text">买什么股票都可以是个人投资视角的问题，关键是你有这种想法，就很难达到几亿市值。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">12:08</span></div><div class="post-text">老木匠就是有强迫症，我己经给他诊断过了！</div></div>
+
+<div class="section-title"><span class="dot"></span>情绪与立场画像</div>
+
+<div class="mood-card"><div class="mood-title">🟠 自信张扬 · 紫金铁多头</div><div class="mood-text">核心持仓：紫金矿业（重仓坚定持有）<br>美伊判断：战争是利好，矿产格局重塑<br>面对看空：从容回应，“许我看多就许别人看空”<br>当日关键词：紫金矿业、美伊利好、第三次强调、投资格局</div></div>
+
+<hr class="divider">
+<div class="footer">
+    <div class="footer-logo">XUEQIU TRACKER</div>
+    <div class="footer-text">数据来源：雪球公开页面 - 生成时间：2026-06-15 18:26 GMT+8<br>仅供参考，不构成投资建议</div>
+</div>
+
 </div>
 </body>
 </html>

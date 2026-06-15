@@ -3,72 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>凝视三千弱水的深渊 - 雪球日报 2026年6月15日</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #f5f7fa; color: #1a1a2e; line-height: 1.7; padding: 20px;
-}}
-.container {{ max-width: 800px; margin: 0 auto; }}
-.header {{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff; border-radius: 16px; padding: 30px; margin-bottom: 24px;
+<title>凝视三千弱水的深渊 - 每日动态 - 2026-06-15</title>
+<style>/* ===== 全局 ===== */
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #333; font-size: 15px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+.container {
+    max-width: 640px; margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+/* ===== 头部 ===== */
+.header {
     text-align: center;
-}}
-.header h1 {{ font-size: 24px; margin-bottom: 8px; }}
-.header .date {{ font-size: 14px; opacity: 0.9; }}
-.header .user-id {{ font-size: 12px; opacity: 0.7; margin-top: 4px; }}
-.overview {{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px; padding: 24px; margin-bottom: 24px; color: #fff;
-    display: flex; justify-content: space-around; text-align: center;
-}}
-.overview-item {{ flex: 1; }}
-.overview-num {{ font-size: 32px; font-weight: bold; }}
-.overview-label {{ font-size: 13px; opacity: 0.85; margin-top: 4px; }}
-.category-card {{
-    background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px;
-    border-left: 4px solid #667eea;
-}}
-.category-card h3 {{ font-size: 16px; color: #667eea; margin-bottom: 8px; }}
-.category-card p {{ font-size: 14px; color: #555; }}
-.mood-card {{
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; color: #fff;
-}}
-.mood-card h3 {{ font-size: 15px; margin-bottom: 4px; }}
-.mood-card p {{ font-size: 13px; opacity: 0.9; }}
-.section-title {{ font-size: 18px; font-weight: 600; margin: 24px 0 16px; color: #333; }}
-.post-card {{
-    background: #fff; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}}
-.post-header {{ display: flex; align-items: center; margin-bottom: 8px; }}
-.tag {{ font-size: 11px; padding: 2px 10px; border-radius: 20px; font-weight: 600; }}
-.post-tag {{ background: #e8f5e9; color: #2e7d32; }}
-.reply-tag {{ background: #fff3e0; color: #e65100; }}
-.time {{ font-size: 12px; color: #999; margin-left: 10px; }}
-.post-content {{ font-size: 14px; color: #333; line-height: 1.6; }}
-.reply-to {{ font-size: 13px; color: #667eea; margin-bottom: 4px; }}
-.reply-card {{ border-left: 3px solid #ff9800; }}
-.inactive-banner {{
-    background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
-    border-radius: 16px; padding: 40px; margin-bottom: 24px; text-align: center; color: #fff;
-}}
-.inactive-banner h2 {{ font-size: 22px; margin-bottom: 8px; }}
-.inactive-banner p {{ font-size: 14px; opacity: 0.85; }}
-.footer {{ text-align: center; font-size: 12px; color: #999; margin-top: 32px; padding: 16px; }}
-.footer a {{ color: #667eea; text-decoration: none; }}
-</style>
+    padding: 20px 0 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+}
+.header-title {
+    font-size: 22px; font-weight: 700;
+    color: #1a1a1a; margin: 0 0 8px;
+    letter-spacing: 0.5px;
+}
+.header-sub {
+    font-size: 13px; color: #999;
+    margin: 0;
+}
+.header-sub span { margin: 0 6px; }
+
+/* ===== 概览卡片 ===== */
+.overview {
+    display: flex; justify-content: space-around;
+    background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
+    border-radius: 10px; padding: 20px 15px;
+    margin: 0 0 25px; color: #fff;
+    box-shadow: 0 4px 15px rgba(7,193,96,0.3);
+}
+.overview-item { text-align: center; flex: 1; }
+.overview-num {
+    font-size: 32px; font-weight: 700;
+    line-height: 1.2;
+}
+.overview-label {
+    font-size: 12px; opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* ===== 统计细分卡片 ===== */
+.stat-detail {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin: 0 0 25px;
+}
+.stat-box {
+    background: #f8f9fa;
+    border-radius: 8px; padding: 12px 14px;
+    text-align: center;
+}
+.stat-box .stat-val {
+    font-size: 24px; font-weight: 700;
+    color: #07c160; line-height: 1.2;
+}
+.stat-box .stat-lbl {
+    font-size: 11px; color: #999; margin-top: 2px;
+}
+
+/* ===== 分区标题 ===== */
+.section-title {
+    display: flex; align-items: center;
+    margin: 25px 0 15px; font-size: 17px; font-weight: 700;
+    color: #1a1a1a;
+}
+.section-title .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background-color: #07c160; margin-right: 8px;
+    flex-shrink: 0;
+}
+.section-count {
+    font-size: 12px; color: #999; font-weight: 400;
+    margin-left: 8px;
+}
+
+/* ===== 帖子卡片 ===== */
+.post-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px 16px;
+    margin-bottom: 12px;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+.post-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* 帖子类型标签 */
+.post-type-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 3px;
+    margin-right: 6px; vertical-align: middle;
+}
+.tag-post {
+    background-color: #07c160; color: #fff;
+}
+.tag-reply {
+    background-color: #f0f0f0; color: #666;
+}
+.tag-column {
+    background-color: #1890ff; color: #fff;
+}
+
+/* 时间标签 */
+.time-tag {
+    display: inline-block;
+    font-size: 12px; color: #07c160;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px; vertical-align: middle;
+}
+
+/* 回复对象 */
+.reply-to {
+    font-size: 12px; color: #576b95;
+    font-weight: 500; margin-right: 6px;
+}
+
+/* 帖子正文 */
+.post-text {
+    font-size: 15px; line-height: 1.75;
+    color: #333; margin: 10px 0 0;
+    word-break: break-word;
+}
+
+/* ===== 回帖卡片 ===== */
+.reply-card {
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-left: 3px solid #07c160;
+}
+.reply-card .post-text {
+    font-size: 14px; color: #555;
+}
+
+/* ===== 分类摘要卡片 ===== */
+.category-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+.category-card .cat-title {
+    font-size: 15px; font-weight: 700;
+    color: #1a1a1a; margin-bottom: 8px;
+}
+.category-card .cat-desc {
+    font-size: 13px; color: #666;
+    line-height: 1.7;
+}
+.cat-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 600;
+    padding: 1px 6px; border-radius: 3px;
+    margin-right: 4px; color: #fff;
+    vertical-align: middle;
+}
+.cat-tag-ai { background: #722ed1; }
+.cat-tag-mi { background: #fa8c16; }
+.cat-tag-comp { background: #eb2f96; }
+.cat-tag-macro { background: #13c2c2; }
+
+/* ===== 链接按钮 ===== */
+.post-link {
+    display: inline-block;
+    font-size: 11px; color: #07c160;
+    text-decoration: none;
+    margin-top: 6px;
+    padding: 2px 6px;
+    border: 1px solid #07c160;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.post-link:hover {
+    background: #07c160; color: #fff;
+}
+
+/* ===== 分隔线 ===== */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #07c160, transparent);
+    margin: 25px 0;
+    border: none;
+}
+
+/* ===== 底部 ===== */
+.footer {
+    text-align: center;
+    padding: 20px 0 10px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+}
+.footer-logo {
+    font-size: 14px; color: #07c160;
+    font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+.footer-text {
+    font-size: 11px; color: #bbb;
+    line-height: 1.6;
+}
+
+/* ===== 情绪画像 ===== */
+.mood-card {
+    background: linear-gradient(135deg, #fff7e6, #fff);
+    border: 1px solid #ffd591;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+.mood-card .mood-title {
+    font-size: 14px; font-weight: 700;
+    color: #d46b08; margin-bottom: 6px;
+}
+.mood-card .mood-text {
+    font-size: 13px; color: #666; line-height: 1.7;
+}</style>
 </head>
 <body>
 <div class="container">
-<div class="header"><h1>凝视三千弱水的深渊</h1><div class="date">2026年6月15日 - 雪球日报</div><div class="user-id">雪球ID: 9236758887</div></div><div class="inactive-banner"><h2>[今日无新动态]</h2><p>该用户在2026年6月15日未在雪球发布任何帖子或回复</p></div>
-    <div class="footer">
-        <p>数据来源：<a href="https://xueqiu.com/u/9236758887" target="_blank">雪球 - 凝视三千弱水的深渊</a> | 抓取时间：2026-06-15 14:12 GMT+8</p>
-        <p><a href="https://cong30.github.io/xueqiu-reports/" target="_blank">返回总览</a></p>
-    </div>
+
+<div class="header">
+    <div class="header-title">凝视三千弱水的深渊 - 每日动态</div>
+    <div class="header-sub"><span>2026-06-15</span><span>|</span><span>雪球 ID: 9236758887</span></div>
+</div>
+
+<div class="inactive-banner">
+    <div class="inactive-icon">📭</div>
+    <h2>今日无新动态</h2>
+    <p>该用户在2026-06-15未在雪球发布任何帖子或回复</p>
+</div>
+
+<hr class="divider">
+<div class="footer">
+    <div class="footer-logo">XUEQIU TRACKER</div>
+    <div class="footer-text">数据来源：雪球公开页面 - 生成时间：2026-06-15 18:26 GMT+8<br>仅供参考，不构成投资建议</div>
+</div>
+
 </div>
 </body>
 </html>

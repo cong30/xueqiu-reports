@@ -3,53 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>雪球大V追踪总览 2026年6月15日</title>
-
+<title>雪球大V追踪总览 2026-06-15</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #f5f7fa; color: #1a1a2e; line-height: 1.7; padding: 20px;
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #333; font-size: 15px; line-height: 1.75;
 }
-.container { max-width: 800px; margin: 0 auto; }
-.header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff; border-radius: 16px; padding: 30px; margin-bottom: 24px; text-align: center;
-}
-.header h1 { font-size: 26px; margin-bottom: 8px; }
-.header .date { font-size: 14px; opacity: 0.9; }
-.header .sub { font-size: 13px; opacity: 0.75; margin-top: 6px; }
-.stats-row { display: flex; gap: 12px; margin-bottom: 24px; }
-.stat-card {
-    flex: 1; background: #fff; border-radius: 12px; padding: 16px;
-    text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-.stat-num { font-size: 28px; font-weight: bold; color: #667eea; }
-.stat-label { font-size: 12px; color: #999; margin-top: 4px; }
-.user-card {
-    display: block; background: #fff; border-radius: 12px; padding: 16px 20px;
-    margin-bottom: 10px; text-decoration: none; color: #333;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: transform 0.15s;
-}
-.user-card:hover { transform: translateX(4px); }
-.user-card.inactive { opacity: 0.6; }
+.container { max-width: 640px; margin: 0 auto; background-color: #fff; padding: 30px 20px; min-height: 100vh; }
+.header { text-align: center; padding: 20px 0 25px; border-bottom: 1px solid #eee; margin-bottom: 25px; }
+.header-title { font-size: 24px; font-weight: 700; color: #1a1a1a; margin: 0 0 8px; }
+.header-sub { font-size: 13px; color: #999; margin: 0; }
+.header-sub span { margin: 0 6px; }
+.stats-row { display: flex; gap: 10px; margin-bottom: 25px; }
+.stat-card { flex: 1; background: #f8f9fa; border-radius: 8px; padding: 16px; text-align: center; }
+.stat-num { font-size: 28px; font-weight: 700; color: #07c160; }
+.stat-label { font-size: 11px; color: #999; margin-top: 4px; }
+.user-card { display: block; background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 16px 18px; margin-bottom: 10px; text-decoration: none; color: #333; transition: all 0.2s; }
+.user-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-color: #07c160; }
+.user-card.inactive { opacity: 0.55; }
 .user-card-header { display: flex; align-items: center; }
-.status-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: #4caf50; margin-right: 12px; flex-shrink: 0;
-}
-.dot-inactive { background: #bdbdbd; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #07c160; margin-right: 12px; flex-shrink: 0; }
+.dot-inactive { background: #d9d9d9; }
 .user-name { font-size: 16px; font-weight: 600; flex: 1; }
-.user-count {
-    font-size: 14px; background: #667eea; color: #fff; padding: 2px 10px;
-    border-radius: 20px; font-weight: 600;
-}
-.user-category { font-size: 13px; color: #888; margin-top: 6px; margin-left: 22px; }
-.footer { text-align: center; font-size: 12px; color: #999; margin-top: 32px; padding: 16px; }
-.footer a { color: #667eea; text-decoration: none; }
+.user-count { font-size: 13px; background: #07c160; color: #fff; padding: 2px 10px; border-radius: 20px; font-weight: 600; }
+.user-count.zero { background: #d9d9d9; }
+.user-category { font-size: 12px; color: #999; margin-top: 6px; margin-left: 20px; }
+.section-title { display: flex; align-items: center; margin: 25px 0 15px; font-size: 17px; font-weight: 700; color: #1a1a1a; }
+.section-title .dot { width: 6px; height: 6px; border-radius: 50%; background-color: #07c160; margin-right: 8px; flex-shrink: 0; }
+.divider { height: 1px; border: none; background: linear-gradient(to right, transparent, #07c160, transparent); margin: 25px 0; }
+.footer { text-align: center; padding: 20px 0 10px; border-top: 1px solid #eee; margin-top: 30px; }
+.footer-logo { font-size: 14px; color: #07c160; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+.footer-text { font-size: 11px; color: #bbb; line-height: 1.6; }
 </style>
 </head>
 <body>
-<div class="container"><div class="header"><h1>雪球大V追踪</h1><div class="date">2026年6月15日 - 日报总览</div><div class="sub">共追踪10位大V - 数据来源雪球</div></div><div class="stats-row"><div class="stat-card"><div class="stat-num">33</div><div class="stat-label">总发言</div></div><div class="stat-card"><div class="stat-num">5</div><div class="stat-label">活跃大V</div></div><div class="stat-card"><div class="stat-num">5</div><div class="stat-label">静默大V</div></div></div><a href="CobraAntony_日报_2026-06-15.html" class="user-card "><div class="user-card-header"><span class="status-dot "></span><span class="user-name">CobraAntony</span><span class="user-count">2</span></div><div class="user-category">美伊局势 - 原油暴跌 - 地缘政治</div></a><a href="ericwarn丁宁_日报_2026-06-15.html" class="user-card inactive"><div class="user-card-header"><span class="status-dot dot-inactive"></span><span class="user-name">ericwarn丁宁</span><span class="user-count">0</span></div><div class="user-category">今日无动态</div></a><a href="斯托伯的天空_日报_2026-06-15.html" class="user-card "><div class="user-card-header"><span class="status-dot "></span><span class="user-name">斯托伯的天空</span><span class="user-count">22</span></div><div class="user-category">能源/煤炭 - 两桶油建仓 - 油价暴跌应对 - 投资心态</div></a><a href="挚爱子洲_日报_2026-06-15.html" class="user-card inactive"><div class="user-card-header"><span class="status-dot dot-inactive"></span><span class="user-name">挚爱子洲</span><span class="user-count">0</span></div><div class="user-category">今日无动态</div></a><a href="超级鹿鼎公_日报_2026-06-15.html" class="user-card "><div class="user-card-header"><span class="status-dot "></span><span class="user-name">超级鹿鼎公</span><span class="user-count">1</span></div><div class="user-category">有色金属 - 电解铝 - 高盛报告点评</div></a><a href="飞翔芸_日报_2026-06-15.html" class="user-card "><div class="user-card-header"><span class="status-dot "></span><span class="user-name">飞翔芸</span><span class="user-count">6</span></div><div class="user-category">紫金矿业 - 美伊战争利好有色 - 投资心态辩论</div></a><a href="凝视三千弱水的深渊_日报_2026-06-15.html" class="user-card inactive"><div class="user-card-header"><span class="status-dot dot-inactive"></span><span class="user-name">凝视三千弱水的深渊</span><span class="user-count">0</span></div><div class="user-category">今日无动态</div></a><a href="学知利行_日报_2026-06-15.html" class="user-card inactive"><div class="user-card-header"><span class="status-dot dot-inactive"></span><span class="user-name">学知利行</span><span class="user-count">0</span></div><div class="user-category">今日无动态</div></a><a href="韭菲特漂流记_日报_2026-06-15.html" class="user-card "><div class="user-card-header"><span class="status-dot "></span><span class="user-name">韭菲特漂流记</span><span class="user-count">2</span></div><div class="user-category">多晶硅 - 投资反思 - 仓位管理</div></a><a href="大黄蚬子hgx_日报_2026-06-15.html" class="user-card inactive"><div class="user-card-header"><span class="status-dot dot-inactive"></span><span class="user-name">大黄蚬子hgx</span><span class="user-count">0</span></div><div class="user-category">今日无动态</div></a><div class="footer"><p>抓取时间：2026-06-15 14:12 GMT+8 | 自动生成 - 仅供参考</p><p><a href="https://github.com/cong30/xueqiu-reports" target="_blank">GitHub仓库</a></p></div></div>
+<div class="container">
+
+<div class="header">
+    <div class="header-title">雪球大V追踪 - 日报总览</div>
+    <div class="header-sub"><span>2026-06-15</span><span>|</span><span>共追踪10位大V</span></div>
+</div>
+
+<div class="stats-row">
+    <div class="stat-card"><div class="stat-num">33</div><div class="stat-label">总发言</div></div>
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">活跃大V</div></div>
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">静默大V</div></div>
+</div>
+
+<div class="section-title"><span class="dot"></span>今日核心主题：美伊协议达成 - 原油暴跌 - 能源股逆势建仓</div>
+
+<a href="CobraAntony_日报_2026-06-15.html" class="user-card ">
+    <div class="user-card-header">
+        <span class="status-dot "></span>
+        <span class="user-name">CobraAntony</span>
+        <span class="user-count ">2</span>
+    </div>
+    <div class="user-category">美伊协议 - 地缘政治</div>
+</a>
+<a href="ericwarn丁宁_日报_2026-06-15.html" class="user-card inactive">
+    <div class="user-card-header">
+        <span class="status-dot dot-inactive"></span>
+        <span class="user-name">ericwarn丁宁</span>
+        <span class="user-count zero">0</span>
+    </div>
+    <div class="user-category">今日无动态</div>
+</a>
+<a href="斯托伯的天空_日报_2026-06-15.html" class="user-card ">
+    <div class="user-card-header">
+        <span class="status-dot "></span>
+        <span class="user-name">斯托伯的天空</span>
+        <span class="user-count ">22</span>
+    </div>
+    <div class="user-category">两桶油建仓 - 煤炭 - 投资心态</div>
+</a>
+<a href="挚爱子洲_日报_2026-06-15.html" class="user-card inactive">
+    <div class="user-card-header">
+        <span class="status-dot dot-inactive"></span>
+        <span class="user-name">挚爱子洲</span>
+        <span class="user-count zero">0</span>
+    </div>
+    <div class="user-category">今日无动态</div>
+</a>
+<a href="超级鹿鼎公_日报_2026-06-15.html" class="user-card ">
+    <div class="user-card-header">
+        <span class="status-dot "></span>
+        <span class="user-name">超级鹿鼎公</span>
+        <span class="user-count ">1</span>
+    </div>
+    <div class="user-category">电解铝 - 高盛报告</div>
+</a>
+<a href="飞翔芸_日报_2026-06-15.html" class="user-card ">
+    <div class="user-card-header">
+        <span class="status-dot "></span>
+        <span class="user-name">飞翔芸</span>
+        <span class="user-count ">6</span>
+    </div>
+    <div class="user-category">紫金矿业 - 美伊利好有色</div>
+</a>
+<a href="凝视三千弱水的深渊_日报_2026-06-15.html" class="user-card inactive">
+    <div class="user-card-header">
+        <span class="status-dot dot-inactive"></span>
+        <span class="user-name">凝视三千弱水的深渊</span>
+        <span class="user-count zero">0</span>
+    </div>
+    <div class="user-category">今日无动态</div>
+</a>
+<a href="学知利行_日报_2026-06-15.html" class="user-card inactive">
+    <div class="user-card-header">
+        <span class="status-dot dot-inactive"></span>
+        <span class="user-name">学知利行</span>
+        <span class="user-count zero">0</span>
+    </div>
+    <div class="user-category">今日无动态</div>
+</a>
+<a href="韭菲特漂流记_日报_2026-06-15.html" class="user-card ">
+    <div class="user-card-header">
+        <span class="status-dot "></span>
+        <span class="user-name">韭菲特漂流记</span>
+        <span class="user-count ">2</span>
+    </div>
+    <div class="user-category">多晶硅 - 投资反思</div>
+</a>
+<a href="大黄蚬子hgx_日报_2026-06-15.html" class="user-card inactive">
+    <div class="user-card-header">
+        <span class="status-dot dot-inactive"></span>
+        <span class="user-name">大黄蚬子hgx</span>
+        <span class="user-count zero">0</span>
+    </div>
+    <div class="user-category">今日无动态</div>
+</a>
+
+
+<hr class="divider">
+<div class="footer">
+    <div class="footer-logo">XUEQIU TRACKER</div>
+    <div class="footer-text">数据来源：雪球公开页面 - 生成时间：2026-06-15 18:26 GMT+8<br>仅供参考，不构成投资建议</div>
+</div>
+
+</div>
 </body>
 </html>

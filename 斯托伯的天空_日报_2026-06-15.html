@@ -3,72 +3,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>斯托伯的天空 - 雪球日报 2026年6月15日</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #f5f7fa; color: #1a1a2e; line-height: 1.7; padding: 20px;
-}}
-.container {{ max-width: 800px; margin: 0 auto; }}
-.header {{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff; border-radius: 16px; padding: 30px; margin-bottom: 24px;
+<title>斯托伯的天空 - 每日动态 - 2026-06-15</title>
+<style>/* ===== 全局 ===== */
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #333; font-size: 15px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+.container {
+    max-width: 640px; margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+/* ===== 头部 ===== */
+.header {
     text-align: center;
-}}
-.header h1 {{ font-size: 24px; margin-bottom: 8px; }}
-.header .date {{ font-size: 14px; opacity: 0.9; }}
-.header .user-id {{ font-size: 12px; opacity: 0.7; margin-top: 4px; }}
-.overview {{
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px; padding: 24px; margin-bottom: 24px; color: #fff;
-    display: flex; justify-content: space-around; text-align: center;
-}}
-.overview-item {{ flex: 1; }}
-.overview-num {{ font-size: 32px; font-weight: bold; }}
-.overview-label {{ font-size: 13px; opacity: 0.85; margin-top: 4px; }}
-.category-card {{
-    background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 16px;
-    border-left: 4px solid #667eea;
-}}
-.category-card h3 {{ font-size: 16px; color: #667eea; margin-bottom: 8px; }}
-.category-card p {{ font-size: 14px; color: #555; }}
-.mood-card {{
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; color: #fff;
-}}
-.mood-card h3 {{ font-size: 15px; margin-bottom: 4px; }}
-.mood-card p {{ font-size: 13px; opacity: 0.9; }}
-.section-title {{ font-size: 18px; font-weight: 600; margin: 24px 0 16px; color: #333; }}
-.post-card {{
-    background: #fff; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}}
-.post-header {{ display: flex; align-items: center; margin-bottom: 8px; }}
-.tag {{ font-size: 11px; padding: 2px 10px; border-radius: 20px; font-weight: 600; }}
-.post-tag {{ background: #e8f5e9; color: #2e7d32; }}
-.reply-tag {{ background: #fff3e0; color: #e65100; }}
-.time {{ font-size: 12px; color: #999; margin-left: 10px; }}
-.post-content {{ font-size: 14px; color: #333; line-height: 1.6; }}
-.reply-to {{ font-size: 13px; color: #667eea; margin-bottom: 4px; }}
-.reply-card {{ border-left: 3px solid #ff9800; }}
-.inactive-banner {{
-    background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
-    border-radius: 16px; padding: 40px; margin-bottom: 24px; text-align: center; color: #fff;
-}}
-.inactive-banner h2 {{ font-size: 22px; margin-bottom: 8px; }}
-.inactive-banner p {{ font-size: 14px; opacity: 0.85; }}
-.footer {{ text-align: center; font-size: 12px; color: #999; margin-top: 32px; padding: 16px; }}
-.footer a {{ color: #667eea; text-decoration: none; }}
-</style>
+    padding: 20px 0 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+}
+.header-title {
+    font-size: 22px; font-weight: 700;
+    color: #1a1a1a; margin: 0 0 8px;
+    letter-spacing: 0.5px;
+}
+.header-sub {
+    font-size: 13px; color: #999;
+    margin: 0;
+}
+.header-sub span { margin: 0 6px; }
+
+/* ===== 概览卡片 ===== */
+.overview {
+    display: flex; justify-content: space-around;
+    background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
+    border-radius: 10px; padding: 20px 15px;
+    margin: 0 0 25px; color: #fff;
+    box-shadow: 0 4px 15px rgba(7,193,96,0.3);
+}
+.overview-item { text-align: center; flex: 1; }
+.overview-num {
+    font-size: 32px; font-weight: 700;
+    line-height: 1.2;
+}
+.overview-label {
+    font-size: 12px; opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* ===== 统计细分卡片 ===== */
+.stat-detail {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin: 0 0 25px;
+}
+.stat-box {
+    background: #f8f9fa;
+    border-radius: 8px; padding: 12px 14px;
+    text-align: center;
+}
+.stat-box .stat-val {
+    font-size: 24px; font-weight: 700;
+    color: #07c160; line-height: 1.2;
+}
+.stat-box .stat-lbl {
+    font-size: 11px; color: #999; margin-top: 2px;
+}
+
+/* ===== 分区标题 ===== */
+.section-title {
+    display: flex; align-items: center;
+    margin: 25px 0 15px; font-size: 17px; font-weight: 700;
+    color: #1a1a1a;
+}
+.section-title .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background-color: #07c160; margin-right: 8px;
+    flex-shrink: 0;
+}
+.section-count {
+    font-size: 12px; color: #999; font-weight: 400;
+    margin-left: 8px;
+}
+
+/* ===== 帖子卡片 ===== */
+.post-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px 16px;
+    margin-bottom: 12px;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+.post-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* 帖子类型标签 */
+.post-type-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 3px;
+    margin-right: 6px; vertical-align: middle;
+}
+.tag-post {
+    background-color: #07c160; color: #fff;
+}
+.tag-reply {
+    background-color: #f0f0f0; color: #666;
+}
+.tag-column {
+    background-color: #1890ff; color: #fff;
+}
+
+/* 时间标签 */
+.time-tag {
+    display: inline-block;
+    font-size: 12px; color: #07c160;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px; vertical-align: middle;
+}
+
+/* 回复对象 */
+.reply-to {
+    font-size: 12px; color: #576b95;
+    font-weight: 500; margin-right: 6px;
+}
+
+/* 帖子正文 */
+.post-text {
+    font-size: 15px; line-height: 1.75;
+    color: #333; margin: 10px 0 0;
+    word-break: break-word;
+}
+
+/* ===== 回帖卡片 ===== */
+.reply-card {
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-left: 3px solid #07c160;
+}
+.reply-card .post-text {
+    font-size: 14px; color: #555;
+}
+
+/* ===== 分类摘要卡片 ===== */
+.category-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+.category-card .cat-title {
+    font-size: 15px; font-weight: 700;
+    color: #1a1a1a; margin-bottom: 8px;
+}
+.category-card .cat-desc {
+    font-size: 13px; color: #666;
+    line-height: 1.7;
+}
+.cat-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 600;
+    padding: 1px 6px; border-radius: 3px;
+    margin-right: 4px; color: #fff;
+    vertical-align: middle;
+}
+.cat-tag-ai { background: #722ed1; }
+.cat-tag-mi { background: #fa8c16; }
+.cat-tag-comp { background: #eb2f96; }
+.cat-tag-macro { background: #13c2c2; }
+
+/* ===== 链接按钮 ===== */
+.post-link {
+    display: inline-block;
+    font-size: 11px; color: #07c160;
+    text-decoration: none;
+    margin-top: 6px;
+    padding: 2px 6px;
+    border: 1px solid #07c160;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.post-link:hover {
+    background: #07c160; color: #fff;
+}
+
+/* ===== 分隔线 ===== */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #07c160, transparent);
+    margin: 25px 0;
+    border: none;
+}
+
+/* ===== 底部 ===== */
+.footer {
+    text-align: center;
+    padding: 20px 0 10px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+}
+.footer-logo {
+    font-size: 14px; color: #07c160;
+    font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+.footer-text {
+    font-size: 11px; color: #bbb;
+    line-height: 1.6;
+}
+
+/* ===== 情绪画像 ===== */
+.mood-card {
+    background: linear-gradient(135deg, #fff7e6, #fff);
+    border: 1px solid #ffd591;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+.mood-card .mood-title {
+    font-size: 14px; font-weight: 700;
+    color: #d46b08; margin-bottom: 6px;
+}
+.mood-card .mood-text {
+    font-size: 13px; color: #666; line-height: 1.7;
+}</style>
 </head>
 <body>
 <div class="container">
-<div class="header"><h1>斯托伯的天空</h1><div class="date">2026年6月15日 - 雪球日报</div><div class="user-id">雪球ID: 9493911686</div></div><div class="overview"><div class="overview-item"><div class="overview-num">10</div><div class="overview-label">发帖</div></div><div class="overview-item"><div class="overview-num">12</div><div class="overview-label">回复</div></div><div class="overview-item"><div class="overview-num">22</div><div class="overview-label">合计</div></div></div><div class="category-card"><h3>[发言分类]</h3><p>能源/煤炭 - 两桶油建仓 - 油价暴跌应对 - 投资心态</p></div><div class="mood-card"><h3>[情绪画像]</h3><p>活跃亢奋，逆势大举加仓能源股，对市场波动保持淡定</p></div><div class="section-title">[当日发言记录]</div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 06:12</span></div><div class="post-content">这就是油价加速下跌的主要原因。$中国海洋石油(00883)$</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 06:30</span></div><div class="post-content">建仓中石油A，不等了，把两桶油配好，准备熬过这场危机。</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 06:45</span></div><div class="post-content">我就知道H买不到，反手一个-5%买了A，H继续-5%，慢慢买，仓位够够的。[配图]</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 06:50</span></div><div class="post-content">刚那个-8%去哪儿了？$中国海洋石油(00883)$</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 06:52</span></div><div class="post-content">黄金股反应有点过了。</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 06:55</span></div><div class="post-content">这不就盈利了吗？！$紫金黄金国际(02259)$</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 07:00</span></div><div class="post-content">重新买入神华，感觉好多了。</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 07:10</span></div><div class="post-content">挂单煤炭，机会难得，希望能成。</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 07:15</span></div><div class="post-content">还有人觉得今年难度不大的吗？</div></div><div class="post-card"><div class="post-header"><span class="tag post-tag">[发帖]</span><span class="time">2026-06-15 07:20</span></div><div class="post-content">今日有新文章，请知。心态崩了，后面一切都会崩。所以保持好心态很重要。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 06:15</span></div><div class="reply-to">-> <strong>@文莱迦叶</strong></div><div class="post-content">疲劳是个主观形容。客观问题是干扰太多，跟踪太难。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:00</span></div><div class="reply-to">-> <strong>@过客aaa</strong></div><div class="post-content">随风奔跑自由是方向，追逐雷和闪电的力量。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:02</span></div><div class="reply-to">-> <strong>@东厂提督魏忠贤</strong></div><div class="post-content">关注，看看沃什准备怎么说。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:05</span></div><div class="reply-to">-> <strong>@仔仔棒哒</strong></div><div class="post-content">抓紧签啊，我天天盼着签，认真的。川子赶紧认输撤出，还世界太平。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:06</span></div><div class="reply-to">-> <strong>@thinstream</strong></div><div class="post-content">厉害了，你司</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:07</span></div><div class="reply-to">-> <strong>@pkulee</strong></div><div class="post-content">按自己舒服的来，不要乱抄作业。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:10</span></div><div class="reply-to">-> <strong>@挺拔的金条钢拳</strong></div><div class="post-content">玩AI的难度也大。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:12</span></div><div class="reply-to">-> <strong>@hrowwkl</strong></div><div class="post-content">科技板块不熄火，有色化工消费啥的很大程度就是套人行情。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:12</span></div><div class="reply-to">-> <strong>@陈乐美股投资</strong></div><div class="post-content">港股的驴股明显就没有A划算了。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:13</span></div><div class="reply-to">-> <strong>@纳兰666</strong></div><div class="post-content">愿世界和平，科技股继续狂飙，冲吧，科技君。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:14</span></div><div class="reply-to">-> <strong>@天道一哥</strong></div><div class="post-content">挺好的，她在向我挥舞她的丝巾。</div></div><div class="post-card reply-card"><div class="post-header"><span class="tag reply-tag">[回复]</span><span class="time">2026-06-15 07:15</span></div><div class="reply-to">-> <strong>@韭黄炒鸡丁</strong></div><div class="post-content">大概率维持不变。</div></div>
-    <div class="footer">
-        <p>数据来源：<a href="https://xueqiu.com/u/9493911686" target="_blank">雪球 - 斯托伯的天空</a> | 抓取时间：2026-06-15 14:12 GMT+8</p>
-        <p><a href="https://cong30.github.io/xueqiu-reports/" target="_blank">返回总览</a></p>
-    </div>
+
+<div class="header">
+    <div class="header-title">斯托伯的天空 - 每日动态</div>
+    <div class="header-sub"><span>2026-06-15</span><span>|</span><span>雪球 ID: 9493911686</span></div>
+</div>
+
+<div class="overview">
+    <div class="overview-item"><div class="overview-num">10</div><div class="overview-label">发帖</div></div>
+    <div class="overview-item"><div class="overview-num">12</div><div class="overview-label">回帖</div></div>
+    <div class="overview-item"><div class="overview-num">22</div><div class="overview-label">总互动</div></div>
+</div>
+
+<div class="stat-detail"><div class="stat-box"><div class="stat-val">06:12-07:20</div><div class="stat-lbl">活跃时段</div></div><div class="stat-box"><div class="stat-val">海油/中石油/神华</div><div class="stat-lbl">最热标的</div></div><div class="stat-box"><div class="stat-val">~1,800字</div><div class="stat-lbl">当日总字数</div></div><div class="stat-box"><div class="stat-val">12位不同用户</div><div class="stat-lbl">最热对话</div></div></div>
+
+<div class="section-title"><span class="dot"></span>发言分类概要<span class="section-count">4 个主题方向</span></div>
+
+<div class="category-card"><div class="cat-title"><span class="cat-tag cat-tag-oil">石油</span> 两桶油逆势建仓（6条发帖+5条回复）</div><div class="cat-desc">⏰ 06:12-07:15 集中爆发<br>油价暴跌背景下大举建仓中石油A+海油，“反手一个-5%买了A，仓位够够的”。指出“这就是油价加速下跌的主要原因”，但选择逆势加仓熬过危机。</div></div><div class="category-card"><div class="cat-title"><span class="cat-tag cat-tag-coal">煤炭</span> 神华+煤炭挂单（2条发帖）</div><div class="cat-desc">⏰ 07:00 + 07:10<br>重新买入神华“感觉好多了”，挂单煤炭“机会难得”。能源全产业链布局（油+煤）。</div></div><div class="category-card"><div class="cat-title"><span class="cat-tag cat-tag-gold">黄金</span> 黄金股与紫金黄金（2条发帖）</div><div class="cat-desc">⏰ 06:52 + 06:55<br>认为“黄金股反应有点过了”，但紫金黄金国际已盈利——“这不就盈利了吗？！”</div></div><div class="category-card"><div class="cat-title"><span class="cat-tag cat-tag-mind">心态</span> 投资心态与市场难度（3条发帖+3条回复）</div><div class="cat-desc">⏰ 07:15 + 07:20<br>“还有人觉得今年难度不大的吗？” “心态崩了，后面一切都会崩。” 强调保持好心态的重要性。</div></div>
+
+<hr class="divider">
+
+<div class="section-title"><span class="dot"></span>全部发言<span class="section-count">按时间倒序 - 共 22 条</span></div>
+
+<div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">07:20</span></div><div class="post-text">今日有新文章，请知。心态崩了，后面一切都会崩。所以保持好心态很重要。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">07:15</span></div><div class="post-text">还有人觉得今年难度不大的吗？</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:15</span><span class="reply-to">回复 @韭黄炒鸡丁</span></div><div class="post-text">大概率维持不变。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:14</span><span class="reply-to">回复 @天道一哥</span></div><div class="post-text">挺好的，她在向我挥舞她的丝巾。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:13</span><span class="reply-to">回复 @纳兰666</span></div><div class="post-text">愿世界和平，科技股继续狂飙，冲吧，科技君。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:12</span><span class="reply-to">回复 @hrowwkl</span></div><div class="post-text">科技板块不熄火，有色化工消费啥的很大程度就是套人行情。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:12</span><span class="reply-to">回复 @陈乐美股投资</span></div><div class="post-text">港股的驴股明显就没有A划算了。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">07:10</span></div><div class="post-text">挂单煤炭，机会难得，希望能成。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:10</span><span class="reply-to">回复 @挺拔的金条钢拳</span></div><div class="post-text">玩AI的难度也大。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:07</span><span class="reply-to">回复 @pkulee</span></div><div class="post-text">按自己舒服的来，不要乱抄作业。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:06</span><span class="reply-to">回复 @thinstream</span></div><div class="post-text">厉害了，你司</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:05</span><span class="reply-to">回复 @仔仔棒哒</span></div><div class="post-text">抓紧签啊，我天天盼着签，认真的。川子赶紧认输撤出，还世界太平。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:02</span><span class="reply-to">回复 @东厂提督魏忠贤</span></div><div class="post-text">关注，看看沃什准备怎么说。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">07:00</span></div><div class="post-text">重新买入神华，感觉好多了。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">07:00</span><span class="reply-to">回复 @过客aaa</span></div><div class="post-text">随风奔跑自由是方向，追逐雷和闪电的力量。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">06:55</span></div><div class="post-text">这不就盈利了吗？！$紫金黄金国际(02259)$</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">06:52</span></div><div class="post-text">黄金股反应有点过了。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">06:50</span></div><div class="post-text">刚才那个-8%去哪儿了？$中国海洋石油(00883)$</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">06:45</span></div><div class="post-text">我就知道H买不到，反手一个-5%买了A，H继续-5%，慢慢买，仓位够够的。[配图]</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">06:30</span></div><div class="post-text">建仓中石油A，不等了，把两桶油配好，准备熬过这场危机。</div></div><div class="reply-card"><div><span class="post-type-tag tag-reply">回帖</span><span class="time-tag">06:15</span><span class="reply-to">回复 @文莱迦叶</span></div><div class="post-text">疲劳是个主观形容。客观问题是干扰太多，跟踪太难。</div></div><div class="post-card"><div><span class="post-type-tag tag-post">发帖</span><span class="time-tag">06:12</span></div><div class="post-text">这就是油价加速下跌的主要原因。$中国海洋石油(00883)$</div></div>
+
+<div class="section-title"><span class="dot"></span>情绪与立场画像</div>
+
+<div class="mood-card"><div class="mood-title">🟢 活跃亢奋 · 逆势加仓派</div><div class="mood-text">核心操作：两桶油+神华+煤炭全链布局<br>市场判断：油价暴跌是建仓机会，“熬过危机”<br>面对质疑：淡定回应，“按自己舒服的来，不要乱抄作业”<br>当日关键词：建仓、熬过危机、逆势、心态、能源</div></div>
+
+<hr class="divider">
+<div class="footer">
+    <div class="footer-logo">XUEQIU TRACKER</div>
+    <div class="footer-text">数据来源：雪球公开页面 - 生成时间：2026-06-15 18:26 GMT+8<br>仅供参考，不构成投资建议</div>
+</div>
+
 </div>
 </body>
 </html>
