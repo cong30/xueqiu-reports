@@ -1,332 +1,85 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>飞翔芸 · 每日动态 · 2026-06-14</title>
-    <style>
-/* ===== 全局 ===== */
-body {
-    margin: 0; padding: 0;
-    background-color: #f5f5f5;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    color: #333; font-size: 15px; line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-}
-.container {
-    max-width: 640px; margin: 0 auto;
-    background-color: #fff;
-    padding: 30px 20px;
-    min-height: 100vh;
-}
-
-/* ===== 头部 ===== */
-.header {
-    text-align: center;
-    padding: 20px 0 25px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 25px;
-}
-.header-title {
-    font-size: 22px; font-weight: 700;
-    color: #1a1a1a; margin: 0 0 8px;
-    letter-spacing: 0.5px;
-}
-.header-sub {
-    font-size: 13px; color: #999;
-    margin: 0;
-}
-.header-sub span { margin: 0 6px; }
-
-/* ===== 概览卡片 ===== */
-.overview {
-    display: flex; justify-content: space-around;
-    background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
-    border-radius: 10px; padding: 20px 15px;
-    margin: 0 0 25px; color: #fff;
-    box-shadow: 0 4px 15px rgba(7,193,96,0.3);
-}
-.overview-item { text-align: center; flex: 1; }
-.overview-num {
-    font-size: 32px; font-weight: 700;
-    line-height: 1.2;
-}
-.overview-label {
-    font-size: 12px; opacity: 0.85;
-    margin-top: 4px;
-}
-
-/* ===== 分区标题 ===== */
-.section-title {
-    display: flex; align-items: center;
-    margin: 25px 0 15px; font-size: 17px; font-weight: 700;
-    color: #1a1a1a;
-}
-.section-title .dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background-color: #07c160; margin-right: 8px;
-    flex-shrink: 0;
-}
-.section-count {
-    font-size: 12px; color: #999; font-weight: 400;
-    margin-left: 8px;
-}
-
-/* ===== 帖子卡片 ===== */
-.post-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 15px 16px;
-    margin-bottom: 12px;
-    position: relative;
-    transition: box-shadow 0.2s;
-}
-.post-card:hover {
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-/* 帖子类型标签 */
-.post-type-tag {
-    display: inline-block;
-    font-size: 11px; font-weight: 600;
-    padding: 2px 8px; border-radius: 3px;
-    margin-right: 6px; vertical-align: middle;
-}
-.tag-post {
-    background-color: #07c160; color: #fff;
-}
-.tag-reply {
-    background-color: #f0f0f0; color: #666;
-}
-
-/* 时间标签 */
-.time-tag {
-    display: inline-block;
-    font-size: 12px; color: #07c160;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-    margin-right: 6px; vertical-align: middle;
-}
-.time-relative {
-    font-size: 11px; color: #bbb;
-    font-weight: 400;
-}
-
-/* 帖子正文 */
-.post-text {
-    font-size: 15px; line-height: 1.75;
-    color: #333; margin: 10px 0 0;
-    word-break: break-word;
-}
-.post-text .reply-target {
-    color: #576b95; font-weight: 500;
-}
-
-/* 图片标记 */
-.image-badge {
-    display: inline-flex; align-items: center;
-    font-size: 12px; color: #999;
-    margin-top: 8px;
-}
-.image-badge::before {
-    content: "📷"; margin-right: 3px; font-size: 13px;
-}
-
-/* ===== 回帖卡片 ===== */
-.reply-card {
-    background: #fafafa;
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-    border-left: 3px solid #07c160;
-}
-.reply-card .post-text {
-    font-size: 14px; color: #555;
-}
-
-/* ===== 持仓信号 ===== */
-.holding-signal {
-    background: #fff8f0;
-    border: 1px solid #ffe0b2;
-    border-radius: 8px;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-}
-.holding-signal .signal-header {
-    display: flex; align-items: center;
-    margin-bottom: 6px;
-}
-.signal-icon { font-size: 14px; margin-right: 4px; }
-.signal-label {
-    font-size: 12px; font-weight: 700;
-    color: #e65100; text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.signal-stock {
-    font-size: 16px; font-weight: 700;
-    color: #e65100; margin-bottom: 2px;
-}
-.signal-action {
-    display: inline-block;
-    font-size: 11px; font-weight: 600;
-    padding: 1px 8px; border-radius: 3px;
-    margin-right: 4px;
-}
-.action-buy { background: #ffe0b2; color: #e65100; }
-.action-sell { background: #c8e6c9; color: #2e7d32; }
-.action-hold { background: #e3f2fd; color: #1565c0; }
-.signal-confidence {
-    font-size: 11px; color: #999;
-}
-.signal-source {
-    font-size: 13px; color: #666;
-    margin-top: 4px; line-height: 1.5;
-    border-left: 2px solid #ffe0b2;
-    padding-left: 8px;
-}
-
-/* ===== 无数据 ===== */
-.empty-state {
-    text-align: center;
-    padding: 40px 20px; color: #ccc;
-}
-.empty-state .empty-icon {
-    font-size: 48px; margin-bottom: 12px;
-}
-.empty-state .empty-text {
-    font-size: 14px;
-}
-
-/* ===== 分隔线 ===== */
-.divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, #07c160, transparent);
-    margin: 25px 0;
-    border: none;
-}
-
-/* ===== 底部 ===== */
-.footer {
-    text-align: center;
-    padding: 20px 0 10px;
-    border-top: 1px solid #eee;
-    margin-top: 30px;
-}
-.footer-logo {
-    font-size: 14px; color: #07c160;
-    font-weight: 700; letter-spacing: 1px;
-    margin-bottom: 6px;
-}
-.footer-text {
-    font-size: 11px; color: #bbb;
-    line-height: 1.6;
-}
-
-/* ===== 互动条 ===== */
-.interaction-bar {
-    display: flex; gap: 15px;
-    margin-top: 10px;
-    font-size: 12px; color: #999;
-}
-.interaction-item { display: flex; align-items: center; gap: 3px; }
-.interaction-icon { font-size: 13px; }
-</style>
-</head>
-<body>
-    <div class="container">
-        
-    <div class="header">
-        <div class="header-title">📊 飞翔芸 · 每日动态</div>
-        <div class="header-sub">
-            <span>2026-06-14</span>
-            <span>|</span>
-            <span>雪球 ID: 9957341637</span>
-        </div>
-    </div>
-    
-
-    <div class="overview">
-        <div class="overview-item">
-            <div class="overview-num">1</div>
-            <div class="overview-label">发帖</div>
-        </div>
-        <div class="overview-item">
-            <div class="overview-num">3</div>
-            <div class="overview-label">回帖</div>
-        </div>
-        <div class="overview-item">
-            <div class="overview-num">4</div>
-            <div class="overview-label">总互动</div>
-        </div>
-        <div class="overview-item">
-            <div class="overview-num">0</div>
-            <div class="overview-label">持仓信号</div>
-        </div>
-    </div>
-    
-
-        <div class="section-title">
-            <span class="dot"></span>
-            今日发帖
-            <span class="section-count">共 1 条</span>
-        </div>
-        
-
-            <div class="post-card">
-                <div>
-                    <span class="post-type-tag tag-post">发帖</span>
-                    <span class="time-tag">2026-06-14 14:52:00</span>
-                </div>
-                <div class="post-text">炫一下近九年的收益率，连续九年满仓运行连续九年盈利，谁与争锋？总结这九年最难几年，18年市场几乎全年下跌太难了，但是顶过来了！</div>
-                
-            </div>
-            
-
-        <div class="section-title">
-            <span class="dot"></span>
-            今日回帖
-            <span class="section-count">共 3 条</span>
-        </div>
-        
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 09:22:00</span>
-                </div>
-                <div class="post-text">回复 股色股香A: 关键你有这种想法，就很难达到几亿市值！</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 10:12:00</span>
-                </div>
-                <div class="post-text">回复 橘子味晨光: 还有五年了，这五年紫金矿业能做很多事情！</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 14:33:00</span>
-                </div>
-                <div class="post-text">紫金矿业锌产量世界第四！紫金矿业矿产金、矿产铜、碳酸锂、矿产钼、矿产锌是国内的绝对的第一。</div>
-            </div>
-            
-
-    <hr class="divider">
-    <div class="footer">
-        <div class="footer-logo">🔴 XUEQIU TRACKER</div>
-        <div class="footer-text">
-            数据来源：雪球公开页面 · 仅供参考，不构成投资建议<br>
-            持仓信号由 AI 分析推断，不等于真实持仓
-        </div>
-    </div>
-    
-    </div>
-</body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>飞翔芸 · 每日动态 · 2026-06-14</title>
+<style>body{margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#333;font-size:15px;line-height:1.75}
+.container{max-width:640px;margin:0 auto;background:#fff;padding:30px 20px;min-height:100vh}
+.header{text-align:center;padding:20px 0 25px;border-bottom:1px solid #eee;margin-bottom:25px}
+.header-title{font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 8px}
+.header-sub{font-size:13px;color:#999;margin:0}
+.overview{display:flex;justify-content:space-around;background:linear-gradient(135deg,#07c160 0%,#06ae56 100%);border-radius:10px;padding:20px 15px;margin:0 0 25px;color:#fff;box-shadow:0 4px 15px rgba(7,193,96,0.3)}
+.overview-item{text-align:center;flex:1}
+.overview-num{font-size:32px;font-weight:700;line-height:1.2}
+.overview-label{font-size:12px;opacity:0.85;margin-top:4px}
+.section-title{display:flex;align-items:center;margin:25px 0 15px;font-size:17px;font-weight:700;color:#1a1a1a}
+.section-title .dot{width:6px;height:6px;border-radius:50%;background-color:#07c160;margin-right:8px;flex-shrink:0}
+.section-count{font-size:12px;color:#999;font-weight:400;margin-left:8px}
+.post-card{background:#fff;border:1px solid #eee;border-radius:8px;padding:15px 16px;margin-bottom:12px}
+.reply-card{background:#fafafa;border:1px solid #f0f0f0;border-radius:8px;padding:12px 14px;margin-bottom:10px;border-left:3px solid #07c160}
+.tag-post{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:3px;margin-right:6px;background:#07c160;color:#fff}
+.tag-reply{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:3px;margin-right:6px;background:#f0f0f0;color:#666}
+.time-tag{font-size:12px;color:#07c160;font-weight:600;margin-right:6px}
+.reply-to{font-size:12px;color:#576b95;font-weight:500;margin-right:6px}
+.post-text{font-size:15px;line-height:1.75;color:#333;margin:10px 0 0;word-break:break-word}
+.reply-card .post-text{font-size:14px;color:#555}
+.mood-card{background:linear-gradient(135deg,#fff7e6,#fff);border:1px solid #ffd591;border-radius:8px;padding:14px 16px;margin:20px 0 10px}
+.mood-title{font-size:14px;font-weight:700;color:#d46b08;margin-bottom:6px}
+.mood-text{font-size:13px;color:#666;line-height:1.7}
+.footer{text-align:center;padding:20px 0 10px;border-top:1px solid #eee;margin-top:30px;font-size:11px;color:#bbb}
+.footer-logo{font-size:14px;color:#07c160;font-weight:700;letter-spacing:1px}
+.empty-state{text-align:center;padding:40px 20px;color:#ccc}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.empty-text{font-size:14px}</style></head>
+<body><div class="container">
+<div class="header">
+    <div class="header-title">📊 飞翔芸 · 每日动态</div>
+    <div class="header-sub"><span>2026-06-14（周日）</span><span>|</span><span>雪球 ID: 9957341637</span></div>
+</div>
+<div class="overview">
+    <div class="overview-item"><div class="overview-num">0</div><div class="overview-label">发帖</div></div>
+    <div class="overview-item"><div class="overview-num">11</div><div class="overview-label">回帖</div></div>
+    <div class="overview-item"><div class="overview-num">11</div><div class="overview-label">总互动</div></div>
+</div>
+<div class="mood-card">
+    <div class="mood-title">🎯 当日画像</div>
+    <div class="mood-text"><strong>核心主题</strong>：紫金矿业 · 长鑫科技申购 · 深度交流<br><strong>情绪判断</strong>：热情互动，紫金重度看好</div>
+</div>
+<div class="section-title"><span class="dot"></span>发帖<span class="section-count">共 0 条</span></div>
+<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-text">今日无发帖</div></div>
+<div class="section-title"><span class="dot"></span>回帖<span class="section-count">共 11 条</span></div>
+<div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">07:19:42</span><span class="reply-to">回复 @泡泡大道</span></div>
+    <div class="post-text">10个应该有，挣个十几万问题不大！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">07:28:54</span><span class="reply-to">回复 @缓慢爬坑中</span></div>
+    <div class="post-text">与实力有关，与券商无关！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">07:54:23</span><span class="reply-to">回复 @小悟空</span></div>
+    <div class="post-text">想申购要20天上海平均市值！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">09:22:31</span><span class="reply-to">回复 @股色股香A</span></div>
+    <div class="post-text">关键你有这种想法，就很难达到几亿市值</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">09:24:26</span><span class="reply-to">回复 @割肉要快准</span></div>
+    <div class="post-text">我不认为美国要加息，也几乎不可能加息！无非是交易个预期！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">09:57:28</span><span class="reply-to">回复 @Roger2018sz</span></div>
+    <div class="post-text">你算的清楚有多少呆坏帐吗？不要光看市盈率！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">10:00:40</span><span class="reply-to">回复 @耐心苏果</span></div>
+    <div class="post-text">在紫金矿业跌到10倍PE以下，谁也吸引不了我</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">10:12:49</span><span class="reply-to">回复 @橘子味晨光</span></div>
+    <div class="post-text">还有五年了，这五年紫金矿业能做很多事情！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">12:45:10</span><span class="reply-to">回复 @价值投资预判</span></div>
+    <div class="post-text">这次紫金矿业股东大会与花旗银行董事总经理尚游总做过专门沟通，尚总是相当看好紫金矿业今后三年的发展</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">14:33:33</span><span class="reply-to">回复 @--大圣--</span></div>
+    <div class="post-text">紫金矿业锌产量世界第四！</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">14:52:43</span><span class="reply-to">回复 @君可知命否</span></div>
+    <div class="post-text">发行价3-4元，估计开盘价12-15元不信到时候看！</div>
+</div>
+<div class="footer"><div class="footer-logo">🔴 XUEQIU TRACKER</div>数据来源：雪球公开页面 · 生成时间：2026-06-15 14:36 GMT+8<br>仅供参考，不构成投资建议</div>
+</div></body></html>

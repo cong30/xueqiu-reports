@@ -1,424 +1,94 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>斯托伯的天空 · 每日动态 · 2026-06-14</title>
-    <style>
-/* ===== 全局 ===== */
-body {
-    margin: 0; padding: 0;
-    background-color: #f5f5f5;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    color: #333; font-size: 15px; line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-}
-.container {
-    max-width: 640px; margin: 0 auto;
-    background-color: #fff;
-    padding: 30px 20px;
-    min-height: 100vh;
-}
-
-/* ===== 头部 ===== */
-.header {
-    text-align: center;
-    padding: 20px 0 25px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 25px;
-}
-.header-title {
-    font-size: 22px; font-weight: 700;
-    color: #1a1a1a; margin: 0 0 8px;
-    letter-spacing: 0.5px;
-}
-.header-sub {
-    font-size: 13px; color: #999;
-    margin: 0;
-}
-.header-sub span { margin: 0 6px; }
-
-/* ===== 概览卡片 ===== */
-.overview {
-    display: flex; justify-content: space-around;
-    background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
-    border-radius: 10px; padding: 20px 15px;
-    margin: 0 0 25px; color: #fff;
-    box-shadow: 0 4px 15px rgba(7,193,96,0.3);
-}
-.overview-item { text-align: center; flex: 1; }
-.overview-num {
-    font-size: 32px; font-weight: 700;
-    line-height: 1.2;
-}
-.overview-label {
-    font-size: 12px; opacity: 0.85;
-    margin-top: 4px;
-}
-
-/* ===== 分区标题 ===== */
-.section-title {
-    display: flex; align-items: center;
-    margin: 25px 0 15px; font-size: 17px; font-weight: 700;
-    color: #1a1a1a;
-}
-.section-title .dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background-color: #07c160; margin-right: 8px;
-    flex-shrink: 0;
-}
-.section-count {
-    font-size: 12px; color: #999; font-weight: 400;
-    margin-left: 8px;
-}
-
-/* ===== 帖子卡片 ===== */
-.post-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 15px 16px;
-    margin-bottom: 12px;
-    position: relative;
-    transition: box-shadow 0.2s;
-}
-.post-card:hover {
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-/* 帖子类型标签 */
-.post-type-tag {
-    display: inline-block;
-    font-size: 11px; font-weight: 600;
-    padding: 2px 8px; border-radius: 3px;
-    margin-right: 6px; vertical-align: middle;
-}
-.tag-post {
-    background-color: #07c160; color: #fff;
-}
-.tag-reply {
-    background-color: #f0f0f0; color: #666;
-}
-
-/* 时间标签 */
-.time-tag {
-    display: inline-block;
-    font-size: 12px; color: #07c160;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-    margin-right: 6px; vertical-align: middle;
-}
-.time-relative {
-    font-size: 11px; color: #bbb;
-    font-weight: 400;
-}
-
-/* 帖子正文 */
-.post-text {
-    font-size: 15px; line-height: 1.75;
-    color: #333; margin: 10px 0 0;
-    word-break: break-word;
-}
-.post-text .reply-target {
-    color: #576b95; font-weight: 500;
-}
-
-/* 图片标记 */
-.image-badge {
-    display: inline-flex; align-items: center;
-    font-size: 12px; color: #999;
-    margin-top: 8px;
-}
-.image-badge::before {
-    content: "📷"; margin-right: 3px; font-size: 13px;
-}
-
-/* ===== 回帖卡片 ===== */
-.reply-card {
-    background: #fafafa;
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-    border-left: 3px solid #07c160;
-}
-.reply-card .post-text {
-    font-size: 14px; color: #555;
-}
-
-/* ===== 持仓信号 ===== */
-.holding-signal {
-    background: #fff8f0;
-    border: 1px solid #ffe0b2;
-    border-radius: 8px;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-}
-.holding-signal .signal-header {
-    display: flex; align-items: center;
-    margin-bottom: 6px;
-}
-.signal-icon { font-size: 14px; margin-right: 4px; }
-.signal-label {
-    font-size: 12px; font-weight: 700;
-    color: #e65100; text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.signal-stock {
-    font-size: 16px; font-weight: 700;
-    color: #e65100; margin-bottom: 2px;
-}
-.signal-action {
-    display: inline-block;
-    font-size: 11px; font-weight: 600;
-    padding: 1px 8px; border-radius: 3px;
-    margin-right: 4px;
-}
-.action-buy { background: #ffe0b2; color: #e65100; }
-.action-sell { background: #c8e6c9; color: #2e7d32; }
-.action-hold { background: #e3f2fd; color: #1565c0; }
-.signal-confidence {
-    font-size: 11px; color: #999;
-}
-.signal-source {
-    font-size: 13px; color: #666;
-    margin-top: 4px; line-height: 1.5;
-    border-left: 2px solid #ffe0b2;
-    padding-left: 8px;
-}
-
-/* ===== 无数据 ===== */
-.empty-state {
-    text-align: center;
-    padding: 40px 20px; color: #ccc;
-}
-.empty-state .empty-icon {
-    font-size: 48px; margin-bottom: 12px;
-}
-.empty-state .empty-text {
-    font-size: 14px;
-}
-
-/* ===== 分隔线 ===== */
-.divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, #07c160, transparent);
-    margin: 25px 0;
-    border: none;
-}
-
-/* ===== 底部 ===== */
-.footer {
-    text-align: center;
-    padding: 20px 0 10px;
-    border-top: 1px solid #eee;
-    margin-top: 30px;
-}
-.footer-logo {
-    font-size: 14px; color: #07c160;
-    font-weight: 700; letter-spacing: 1px;
-    margin-bottom: 6px;
-}
-.footer-text {
-    font-size: 11px; color: #bbb;
-    line-height: 1.6;
-}
-
-/* ===== 互动条 ===== */
-.interaction-bar {
-    display: flex; gap: 15px;
-    margin-top: 10px;
-    font-size: 12px; color: #999;
-}
-.interaction-item { display: flex; align-items: center; gap: 3px; }
-.interaction-icon { font-size: 13px; }
-</style>
-</head>
-<body>
-    <div class="container">
-        
-    <div class="header">
-        <div class="header-title">📊 斯托伯的天空 · 每日动态</div>
-        <div class="header-sub">
-            <span>2026-06-14</span>
-            <span>|</span>
-            <span>雪球 ID: 9493911686</span>
-        </div>
-    </div>
-    
-
-    <div class="overview">
-        <div class="overview-item">
-            <div class="overview-num">3</div>
-            <div class="overview-label">发帖</div>
-        </div>
-        <div class="overview-item">
-            <div class="overview-num">11</div>
-            <div class="overview-label">回帖</div>
-        </div>
-        <div class="overview-item">
-            <div class="overview-num">14</div>
-            <div class="overview-label">总互动</div>
-        </div>
-        <div class="overview-item">
-            <div class="overview-num">0</div>
-            <div class="overview-label">持仓信号</div>
-        </div>
-    </div>
-    
-
-        <div class="section-title">
-            <span class="dot"></span>
-            今日发帖
-            <span class="section-count">共 3 条</span>
-        </div>
-        
-
-            <div class="post-card">
-                <div>
-                    <span class="post-type-tag tag-post">发帖</span>
-                    <span class="time-tag">2026-06-14 10:55:00</span>
-                </div>
-                <div class="post-text">主帖: 动不动就是时政有害信息。像极了租界里的巡捕 @小秘书。讨论了内容审查/学术圈崇洋问题。</div>
-                
-            </div>
-            
-
-            <div class="post-card">
-                <div>
-                    <span class="post-type-tag tag-post">发帖</span>
-                    <span class="time-tag">2026-06-14 16:44:00</span>
-                </div>
-                <div class="post-text">主帖: 2400万说少了，最大的收入应该是后面的医美产业链。这玩意儿是肯定有市场的，我看了几个视频，学员都是三四十岁的中年妇女...讨论了医美产业链和男性情感课的市场。</div>
-                
-            </div>
-            
-
-            <div class="post-card">
-                <div>
-                    <span class="post-type-tag tag-post">发帖</span>
-                    <span class="time-tag">2026-06-14 18:52:00</span>
-                </div>
-                <div class="post-text">主帖: 只要海峡一开放，小以铁定往死里打珍珠档。目前协议文本都是朗子爆出来的，按那个条款的话，朗子确实赢麻了，川子真敢签？拭目以待。讨论了美伊协议、以色列黎巴嫩局势、霍尔木兹海峡开放。</div>
-                
-            </div>
-            
-
-        <div class="section-title">
-            <span class="dot"></span>
-            今日回帖
-            <span class="section-count">共 11 条</span>
-        </div>
-        
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 11:00:00</span>
-                </div>
-                <div class="post-text">回复: 学术圈和某个圈子是崇洋最严重的地方。(在394631853帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 12:20:00</span>
-                </div>
-                <div class="post-text">回复: 这都过去多少年了。附1980年广州友谊商店照片。(URL:394637306)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 12:47:00</span>
-                </div>
-                <div class="post-text">回复: 这是1980年广州友谊商店的照片，当时主要针对外国人和lingdao们，现在肯定是没有了。但某些意识依旧留存在某些人的脑子里，很难改掉。(在394631853帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 21:00:00</span>
-                </div>
-                <div class="post-text">回复: 以色列已经占领利塔尼河，目标明确是推进到贝鲁特，不可能放弃黎巴嫩战线。这个美伊都管不住。(在394659061帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 21:08:00</span>
-                </div>
-                <div class="post-text">回复@闲来无事游: 朗子的国策就是反以，珍珠是反以最主要的盟友，失去了珍珠，小以更是无所畏惧了。而且朗子是搞地区霸权主义的，到处扶持势力反它国ZF，整个中东80%的战乱都跟朗子有关。</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 21:15:00</span>
-                </div>
-                <div class="post-text">回复: 海峡不论开不开，小以都会抓住这次时机，目的是要彻底弄④珍珠档，斩草除根地去除后患。(在394659061帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 21:20:00</span>
-                </div>
-                <div class="post-text">回复: 不可能开放的，后面有的打。伊朗承诺不发展核武，美国默许海峡收费，就这个版本呗。(在394659061帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 21:23:00</span>
-                </div>
-                <div class="post-text">回复: 小以的情报网遍布中东，特别是朗子，从上到下都是小以的眼线。小以比川子了解朗子超过100倍。在朗子眼里，川子就是个精神病患者和低能儿。川子对东大、对俄乌、对欧洲等都体现出幼稚和低能的一面。</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 22:28:00</span>
-                </div>
-                <div class="post-text">回复: 其实以色列掌握的美国情报可能比川子还多点。(在394659061帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 22:46:00</span>
-                </div>
-                <div class="post-text">回复: 说了很多遍了，以色列对美国比川子更重要。美国可以没有川普，但不能没有以色列。(在394659061帖内)</div>
-            </div>
-            
-
-            <div class="reply-card">
-                <div>
-                    <span class="post-type-tag tag-reply">回帖</span>
-                    <span class="time-tag">2026-06-14 23:06:00</span>
-                </div>
-                <div class="post-text">回复: 什么二战前都来了！二战前美元是世界货币吗？有美元石油体系吗？美国怎么可能撤出中东，美债都40万亿了。(在394659061帖内)</div>
-            </div>
-            
-
-    <hr class="divider">
-    <div class="footer">
-        <div class="footer-logo">🔴 XUEQIU TRACKER</div>
-        <div class="footer-text">
-            数据来源：雪球公开页面 · 仅供参考，不构成投资建议<br>
-            持仓信号由 AI 分析推断，不等于真实持仓
-        </div>
-    </div>
-    
-    </div>
-</body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>斯托伯的天空 · 每日动态 · 2026-06-14</title>
+<style>body{margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#333;font-size:15px;line-height:1.75}
+.container{max-width:640px;margin:0 auto;background:#fff;padding:30px 20px;min-height:100vh}
+.header{text-align:center;padding:20px 0 25px;border-bottom:1px solid #eee;margin-bottom:25px}
+.header-title{font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 8px}
+.header-sub{font-size:13px;color:#999;margin:0}
+.overview{display:flex;justify-content:space-around;background:linear-gradient(135deg,#07c160 0%,#06ae56 100%);border-radius:10px;padding:20px 15px;margin:0 0 25px;color:#fff;box-shadow:0 4px 15px rgba(7,193,96,0.3)}
+.overview-item{text-align:center;flex:1}
+.overview-num{font-size:32px;font-weight:700;line-height:1.2}
+.overview-label{font-size:12px;opacity:0.85;margin-top:4px}
+.section-title{display:flex;align-items:center;margin:25px 0 15px;font-size:17px;font-weight:700;color:#1a1a1a}
+.section-title .dot{width:6px;height:6px;border-radius:50%;background-color:#07c160;margin-right:8px;flex-shrink:0}
+.section-count{font-size:12px;color:#999;font-weight:400;margin-left:8px}
+.post-card{background:#fff;border:1px solid #eee;border-radius:8px;padding:15px 16px;margin-bottom:12px}
+.reply-card{background:#fafafa;border:1px solid #f0f0f0;border-radius:8px;padding:12px 14px;margin-bottom:10px;border-left:3px solid #07c160}
+.tag-post{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:3px;margin-right:6px;background:#07c160;color:#fff}
+.tag-reply{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:3px;margin-right:6px;background:#f0f0f0;color:#666}
+.time-tag{font-size:12px;color:#07c160;font-weight:600;margin-right:6px}
+.reply-to{font-size:12px;color:#576b95;font-weight:500;margin-right:6px}
+.post-text{font-size:15px;line-height:1.75;color:#333;margin:10px 0 0;word-break:break-word}
+.reply-card .post-text{font-size:14px;color:#555}
+.mood-card{background:linear-gradient(135deg,#fff7e6,#fff);border:1px solid #ffd591;border-radius:8px;padding:14px 16px;margin:20px 0 10px}
+.mood-title{font-size:14px;font-weight:700;color:#d46b08;margin-bottom:6px}
+.mood-text{font-size:13px;color:#666;line-height:1.7}
+.footer{text-align:center;padding:20px 0 10px;border-top:1px solid #eee;margin-top:30px;font-size:11px;color:#bbb}
+.footer-logo{font-size:14px;color:#07c160;font-weight:700;letter-spacing:1px}
+.empty-state{text-align:center;padding:40px 20px;color:#ccc}
+.empty-icon{font-size:48px;margin-bottom:12px}
+.empty-text{font-size:14px}</style></head>
+<body><div class="container">
+<div class="header">
+    <div class="header-title">📊 斯托伯的天空 · 每日动态</div>
+    <div class="header-sub"><span>2026-06-14（周日）</span><span>|</span><span>雪球 ID: 9493911686</span></div>
+</div>
+<div class="overview">
+    <div class="overview-item"><div class="overview-num">7</div><div class="overview-label">发帖</div></div>
+    <div class="overview-item"><div class="overview-num">7</div><div class="overview-label">回帖</div></div>
+    <div class="overview-item"><div class="overview-num">14</div><div class="overview-label">总互动</div></div>
+</div>
+<div class="mood-card">
+    <div class="mood-title">🎯 当日画像</div>
+    <div class="mood-text"><strong>核心主题</strong>：能源周期 · 石油/煤炭/神华/中石油<br><strong>情绪判断</strong>：谨慎乐观，逆势布局能源股</div>
+</div>
+<div class="section-title"><span class="dot"></span>发帖<span class="section-count">共 7 条</span></div>
+<div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">今日有新文章，请知。拙文一篇，与诸君共勉。</div>
+</div><div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">重新买入神华，感觉好多了。</div>
+</div><div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">还有人觉得今年难度不大的吗？</div>
+</div><div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">这就是油价加速下跌的主要原因。$中国海洋石油(00883)$</div>
+</div><div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">建仓中石油A，不等了，把两桶油配好，准备熬过这场危机。【配图】</div>
+</div><div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">我就知道H买不到，反手一个-5%买了A，H继续-5%，慢慢买，仓位够够的。</div>
+</div><div class="post-card">
+    <div><span class="tag-post">发帖</span><span class="time-tag">2026-06-14</span></div>
+    <div class="post-text">挂单煤炭，机会难得，希望能成。</div>
+</div>
+<div class="section-title"><span class="dot"></span>回帖<span class="section-count">共 7 条</span></div>
+<div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @Anne98</span></div>
+    <div class="post-text">新粉请问文章发在哪儿了 → VX</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @过客aaa</span></div>
+    <div class="post-text">某队也在撤离，为科技崩塌后的抄底做准备 → 随风奔跑追逐雷和闪电的力量</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @东厂提督魏忠贤</span></div>
+    <div class="post-text">油是个重大节点，中旬还有两场议息会议 → 关注沃什准备怎么说</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @仔仔棒哒</span></div>
+    <div class="post-text">不是要签协议了吗？海峡通了 → 抓紧签，川子赶紧认输</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @pkulee</span></div>
+    <div class="post-text">在犹豫海油和神华 → 按自己舒服的来，不要乱抄作业</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @hrowwkl</span></div>
+    <div class="post-text">打不打科技都是涨 → 科技不熄火，有色化工消费就是套人行情</div>
+</div><div class="reply-card">
+    <div><span class="tag-reply">回帖</span><span class="time-tag">2026-06-14</span><span class="reply-to">回复 @韭黄炒鸡丁</span></div>
+    <div class="post-text">川子急着达成协议给沃什降息空间 → 大概率维持不变</div>
+</div>
+<div class="footer"><div class="footer-logo">🔴 XUEQIU TRACKER</div>数据来源：雪球公开页面 · 生成时间：2026-06-15 14:36 GMT+8<br>仅供参考，不构成投资建议</div>
+</div></body></html>
