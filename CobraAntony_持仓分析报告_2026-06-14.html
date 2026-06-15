@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CobraAntony · AI持仓分析报告（每日追踪版）</title>
+    <style>
+body{margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#333;font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.container{max-width:680px;margin:0 auto;background:#fff;padding:30px 20px}
+.header{text-align:center;padding:20px 0 25px;border-bottom:1px solid #eee;margin-bottom:25px}
+.header-title{font-size:22px;font-weight:700;color:#1a1a1a;margin:0 0 8px}
+.header-sub{font-size:13px;color:#999;margin:0}
+.overview{display:flex;justify-content:space-around;background:linear-gradient(135deg,#07c160 0%,#06ae56 100%);border-radius:10px;padding:20px 15px;margin:0 0 25px;color:#fff;box-shadow:0 4px 15px rgba(7,193,96,0.3)}
+.overview-item{text-align:center;flex:1}
+.overview-num{font-size:28px;font-weight:700;line-height:1.2}
+.overview-label{font-size:11px;opacity:.85;margin-top:2px}
+.section-title{display:flex;align-items:center;margin:25px 0 15px;font-size:17px;font-weight:700;color:#1a1a1a}
+.section-title .dot{width:5px;height:5px;border-radius:50%;margin-right:8px;flex-shrink:0}
+.card{background:#fff;border:1px solid #eee;border-radius:8px;padding:15px 16px;margin-bottom:12px}
+.card-header{display:flex;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:4px}
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.tag-strong{background:#fce4ec;color:#c62828;border:1px solid #ef9a9a}
+.tag-mid{background:#fff8e1;color:#f57f17;border:1px solid #ffe082}
+.tag-weak{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9}
+.tag-hk{background:#e8eaf6;color:#283593;border:1px solid #c5cae9;font-size:9px}
+.tag-a{background:#fce4ec;color:#c62828;border:1px solid #ef9a9a;font-size:9px}
+.tag-first{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.tag-add{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+.tag-watch{background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8}
+.card-title{font-size:15px;font-weight:700;color:#1a1a1a}
+.card-body{margin-top:8px;font-size:14px;line-height:1.7;color:#444}
+.conclusion-box{background:#f9f9f9;border-radius:6px;padding:10px 12px;margin:6px 0;font-size:14px;color:#333;line-height:1.7}
+.evidence-box{background:#fff;border:1px dashed #ddd;border-radius:4px;padding:6px 10px;margin:6px 0;font-size:12px;color:#888;line-height:1.6}
+.source{font-size:11px;color:#aaa;margin-top:4px}
+.table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+.table th{background:#f8f8f8;color:#666;font-weight:600;padding:8px 6px;text-align:left;border-bottom:2px solid #eee;font-size:11px}
+.table td{padding:8px 6px;border-bottom:1px solid #f0f0f0;vertical-align:top}
+.table tr:last-child td{border-bottom:none}
+.footer{text-align:center;padding:20px 0 10px;border-top:1px solid #eee;margin-top:30px}
+.footer-text{font-size:11px;color:#bbb;line-height:1.6}
+.divider{height:1px;background:linear-gradient(to right,transparent,#07c160,transparent);margin:25px 0;border:none}
+.summary-box{background:#fafff5;border:1px solid #c8e6c9;border-radius:8px;padding:15px;margin-bottom:20px}
+.highlight-row{background:#fffde7!important}
+</style>
+</head>
+<body>
+    <div class="container">
+        
+    <div class="header">
+        <div class="header-title">📋 CobraAntony · 持仓分析报告</div>
+        <div class="header-sub">2026-06-15 11:49:00 | 雪球 ID: 5068022281 | 当日信号 + 跨日累计</div>
+    </div>
+    
+    <div class="overview">
+        <div class="overview-item"><div class="overview-num">0</div><div class="overview-label">🔴 今日强信号</div></div>
+        <div class="overview-item"><div class="overview-num">0</div><div class="overview-label">🟡 今日中信号</div></div>
+        <div class="overview-item"><div class="overview-num">1</div><div class="overview-label">🔵 今日弱信号</div></div>
+        <div class="overview-item"><div class="overview-num">0</div><div class="overview-label">今日有效信号</div></div>
+        <div class="overview-item"><div class="overview-num">4</div><div class="overview-label">📦 累计追踪标的</div></div>
+    </div>
+    
+    <div class="section-title"><span class="dot" style="background:#07c160"></span>📌 今日发言概要</div>
+    <div class="summary-box"><p style="margin:0;font-size:14px;line-height:1.8"><strong>CobraAntony</strong>今日共发布 <strong>2 条主贴</strong>、参与 <strong>3 次回帖互动</strong>。从内容分布来看，投资/市场相关讨论约 <strong>1 条</strong>，涵盖 4 个主题方向。</p>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.8"><strong>今日讨论热点：</strong>
+• <strong>小米</strong>（2条）：讨论小米的产品生态、AIoT布局和投资逻辑。（引证：「回复 大湾区船王: 我阿里的成本70，小米的成本17.25，第3轮的成本37.88，100元的价格买入阿里是一个不错的时…；回复 大湾区船王: 你的心在变，我的…」）
+• <strong>阿里巴巴</strong>（2条）：探讨阿里巴巴的投资价值和港股通情况。（引证：「回复 大湾区船王: 我阿里的成本70，小米的成本17.25，第3轮的成本37.88，100元的价格买入阿里是一个不错的时…；回复 大湾区船王: 高强度投入是前期…」）
+• <strong>美伊协议/中东</strong>（1条）：关注美伊协议签署进展和霍尔木兹海峡开放对全球市场的影响。（引证：「应该是真谈成了！WTI原油期货跌幅扩大至5%，报80.53美元/桶。消息面上，特朗普称美伊达成和平协议。」）
+• <strong>原油/能源</strong>（1条）：分析原油市场供需格局和油价走势判断。（引证：「应该是真谈成了！WTI原油期货跌幅扩大至5%，报80.53美元/桶。消息面上，特朗普称美伊达成和平协议。」）</p>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.8"><strong>整体判断：</strong>大V今日有<strong>明确买入/持有信号</strong>，需重点关注相关标的和后续动向。</p></div>
+    
+    <div class="section-title"><span class="dot" style="background:#e65100"></span>🚨 今日（2026-06-14）买卖信号分析</div>
+    
+            <div class="card">
+                <div class="card-header">
+                    <span class="tag tag-weak">🔵 弱</span>
+                    <span style="font-size:12px;color:#999;margin-left:4px">📉 看空 · </span>
+                    <span style="font-size:10px;color:#aaa;margin-left:6px">发帖</span>
+                    
+                </div>
+                <div class="card-title" style="font-size:14px">市场/投资观点</div>
+                <div class="card-body">
+                    <div class="conclusion-box" style="border-left:3px solid #1e88e5;background:#f5f9ff">
+                        <strong>📊 分析结论：</strong>针对<strong>原油/能源</strong>，短期偏谨慎，认为下行风险尚未出清。
+                    </div>
+                    <div class="evidence-box">
+                        📎 <strong>引证依据：</strong>「应该是真谈成了！WTI原油期货跌幅扩大至5%，报80.53美元/桶。消息面上，特朗普称美伊达成和平协议。」
+                        <span style="display:block;font-size:11px;color:#bbb;margin-top:2px">分类：市场走势判断</span>
+                    </div>
+                </div>
+            </div><hr class="divider">
+    <div class="section-title"><span class="dot" style="background:#1565c0"></span>📊 累计持仓追踪（跨日汇总 · 有记忆性）</div>
+    
+        <div style="overflow-x:auto;margin-bottom:15px">
+        <table class="table">
+            <tr>
+                <th>标的</th>
+                <th>首次提及</th>
+                <th>最近提及</th>
+                <th>累计提及</th>
+                <th>趋势</th>
+            </tr>
+            <tr>
+                <td><strong>腾讯控股</strong><br><span style="font-size:10px;color:#999">00700</span></td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:12px;text-align:center"><strong>1</strong><br><span style="font-size:10px;color:#999">1天</span></td>
+                <td><span class="tag tag-watch">📌 提及关注</span></td>
+            </tr>
+            <tr>
+                <td><strong>XD中国平</strong><br><span style="font-size:10px;color:#999">SH601318</span></td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:12px;text-align:center"><strong>1</strong><br><span style="font-size:10px;color:#999">1天</span></td>
+                <td><span class="tag tag-watch">📌 提及关注</span></td>
+            </tr>
+            <tr>
+                <td><strong>伊利股份</strong><br><span style="font-size:10px;color:#999">SH600887</span></td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:12px;text-align:center"><strong>1</strong><br><span style="font-size:10px;color:#999">1天</span></td>
+                <td><span class="tag tag-watch">📌 提及关注</span></td>
+            </tr>
+            <tr>
+                <td><strong>贵州茅台</strong><br><span style="font-size:10px;color:#999">SH600519</span></td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:11px">2026-06-12</td>
+                <td style="font-size:12px;text-align:center"><strong>1</strong><br><span style="font-size:10px;color:#999">1天</span></td>
+                <td><span class="tag tag-watch">📌 提及关注</span></td>
+            </tr></table></div><div style="font-size:11px;color:#999;margin-bottom:10px">⭐ 标记 = 今日有提及。累计追踪基于数据库全部历史数据（共4条信号）。</div>
+    <hr class="divider">
+    <div class="section-title"><span class="dot" style="background:#c62828"></span>📝 分析师说明</div>
+    <div class="card" style="background:#fafafa;border-color:#e0e0e0">
+        <div class="card-body" style="font-size:13px">
+            <p><strong>持仓判定标准：</strong></p>
+            <ul>
+                <li><strong>🔴 强信号</strong>：出现"买点/买入/抄底/加仓/拿好了/持有/上车"等明确操作表述</li>
+                <li><strong>🟡 中信号</strong>：出现"看好/关注"等积极表述，但无明确买入/持有措辞</li>
+                <li><strong>🔵 弱信号</strong>：表达市场/投资相关观点，但无明确操作关键词</li>
+            </ul>
+            <p><strong>累计持仓追踪规则：</strong></p>
+            <ul>
+                <li>读取SQLite数据库中该大V的<strong>全部历史发帖</strong>，按日期分组检测</li>
+                <li>同一标的在不同日期反复提及 → 记录为持续关注</li>
+                <li>信号等级变为强信号（买入/加仓） → 标记为"持续加码"</li>
+                <li>新出现的标的 → 标记为"首次出现"</li>
+                <li>每日更新，保持跨日记忆性</li>
+            </ul>
+            <p style="color:#999;font-size:11px;margin-top:10px">
+            ⚠️ 本报告为基于公开帖文的AI分析，不构成投资建议。
+            </p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-text">
+            🔴 XUEQIU TRACKER · AI持仓分析报告（每日追踪版）<br>
+            数据来源：雪球公开帖子 · 仅供参考 · 不构成投资建议<br>
+            生成时间：2026-06-15 11:51:10
+        </div>
+    </div>
+    
+    </div>
+</body>
+</html>

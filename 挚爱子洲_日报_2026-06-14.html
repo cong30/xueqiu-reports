@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>挚爱子洲 · 每日动态 · 2026-06-14</title>
+    <style>
+/* ===== 全局 ===== */
+body {
+    margin: 0; padding: 0;
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #333; font-size: 15px; line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+.container {
+    max-width: 640px; margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 20px;
+    min-height: 100vh;
+}
+
+/* ===== 头部 ===== */
+.header {
+    text-align: center;
+    padding: 20px 0 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+}
+.header-title {
+    font-size: 22px; font-weight: 700;
+    color: #1a1a1a; margin: 0 0 8px;
+    letter-spacing: 0.5px;
+}
+.header-sub {
+    font-size: 13px; color: #999;
+    margin: 0;
+}
+.header-sub span { margin: 0 6px; }
+
+/* ===== 概览卡片 ===== */
+.overview {
+    display: flex; justify-content: space-around;
+    background: linear-gradient(135deg, #07c160 0%, #06ae56 100%);
+    border-radius: 10px; padding: 20px 15px;
+    margin: 0 0 25px; color: #fff;
+    box-shadow: 0 4px 15px rgba(7,193,96,0.3);
+}
+.overview-item { text-align: center; flex: 1; }
+.overview-num {
+    font-size: 32px; font-weight: 700;
+    line-height: 1.2;
+}
+.overview-label {
+    font-size: 12px; opacity: 0.85;
+    margin-top: 4px;
+}
+
+/* ===== 分区标题 ===== */
+.section-title {
+    display: flex; align-items: center;
+    margin: 25px 0 15px; font-size: 17px; font-weight: 700;
+    color: #1a1a1a;
+}
+.section-title .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background-color: #07c160; margin-right: 8px;
+    flex-shrink: 0;
+}
+.section-count {
+    font-size: 12px; color: #999; font-weight: 400;
+    margin-left: 8px;
+}
+
+/* ===== 帖子卡片 ===== */
+.post-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px 16px;
+    margin-bottom: 12px;
+    position: relative;
+    transition: box-shadow 0.2s;
+}
+.post-card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* 帖子类型标签 */
+.post-type-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 3px;
+    margin-right: 6px; vertical-align: middle;
+}
+.tag-post {
+    background-color: #07c160; color: #fff;
+}
+.tag-reply {
+    background-color: #f0f0f0; color: #666;
+}
+
+/* 时间标签 */
+.time-tag {
+    display: inline-block;
+    font-size: 12px; color: #07c160;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px; vertical-align: middle;
+}
+.time-relative {
+    font-size: 11px; color: #bbb;
+    font-weight: 400;
+}
+
+/* 帖子正文 */
+.post-text {
+    font-size: 15px; line-height: 1.75;
+    color: #333; margin: 10px 0 0;
+    word-break: break-word;
+}
+.post-text .reply-target {
+    color: #576b95; font-weight: 500;
+}
+
+/* 图片标记 */
+.image-badge {
+    display: inline-flex; align-items: center;
+    font-size: 12px; color: #999;
+    margin-top: 8px;
+}
+.image-badge::before {
+    content: "📷"; margin-right: 3px; font-size: 13px;
+}
+
+/* ===== 回帖卡片 ===== */
+.reply-card {
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-left: 3px solid #07c160;
+}
+.reply-card .post-text {
+    font-size: 14px; color: #555;
+}
+
+/* ===== 持仓信号 ===== */
+.holding-signal {
+    background: #fff8f0;
+    border: 1px solid #ffe0b2;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+}
+.holding-signal .signal-header {
+    display: flex; align-items: center;
+    margin-bottom: 6px;
+}
+.signal-icon { font-size: 14px; margin-right: 4px; }
+.signal-label {
+    font-size: 12px; font-weight: 700;
+    color: #e65100; text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.signal-stock {
+    font-size: 16px; font-weight: 700;
+    color: #e65100; margin-bottom: 2px;
+}
+.signal-action {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    padding: 1px 8px; border-radius: 3px;
+    margin-right: 4px;
+}
+.action-buy { background: #ffe0b2; color: #e65100; }
+.action-sell { background: #c8e6c9; color: #2e7d32; }
+.action-hold { background: #e3f2fd; color: #1565c0; }
+.signal-confidence {
+    font-size: 11px; color: #999;
+}
+.signal-source {
+    font-size: 13px; color: #666;
+    margin-top: 4px; line-height: 1.5;
+    border-left: 2px solid #ffe0b2;
+    padding-left: 8px;
+}
+
+/* ===== 无数据 ===== */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px; color: #ccc;
+}
+.empty-state .empty-icon {
+    font-size: 48px; margin-bottom: 12px;
+}
+.empty-state .empty-text {
+    font-size: 14px;
+}
+
+/* ===== 分隔线 ===== */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #07c160, transparent);
+    margin: 25px 0;
+    border: none;
+}
+
+/* ===== 底部 ===== */
+.footer {
+    text-align: center;
+    padding: 20px 0 10px;
+    border-top: 1px solid #eee;
+    margin-top: 30px;
+}
+.footer-logo {
+    font-size: 14px; color: #07c160;
+    font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+.footer-text {
+    font-size: 11px; color: #bbb;
+    line-height: 1.6;
+}
+
+/* ===== 互动条 ===== */
+.interaction-bar {
+    display: flex; gap: 15px;
+    margin-top: 10px;
+    font-size: 12px; color: #999;
+}
+.interaction-item { display: flex; align-items: center; gap: 3px; }
+.interaction-icon { font-size: 13px; }
+</style>
+</head>
+<body>
+    <div class="container">
+        
+    <div class="header">
+        <div class="header-title">📊 挚爱子洲 · 每日动态</div>
+        <div class="header-sub">
+            <span>2026-06-14</span>
+            <span>|</span>
+            <span>雪球 ID: 7123126150</span>
+        </div>
+    </div>
+    
+
+    <div class="overview">
+        <div class="overview-item">
+            <div class="overview-num">2</div>
+            <div class="overview-label">发帖</div>
+        </div>
+        <div class="overview-item">
+            <div class="overview-num">1</div>
+            <div class="overview-label">回帖</div>
+        </div>
+        <div class="overview-item">
+            <div class="overview-num">3</div>
+            <div class="overview-label">总互动</div>
+        </div>
+        <div class="overview-item">
+            <div class="overview-num">0</div>
+            <div class="overview-label">持仓信号</div>
+        </div>
+    </div>
+    
+
+        <div class="section-title">
+            <span class="dot"></span>
+            今日发帖
+            <span class="section-count">共 2 条</span>
+        </div>
+        
+
+            <div class="post-card">
+                <div>
+                    <span class="post-type-tag tag-post">发帖</span>
+                    <span class="time-tag">2026-06-14 12:58:00</span>
+                </div>
+                <div class="post-text">近期感悟：一，伴随着年龄增长，后续看得长一些远一些，不再为油价煤价煤化工价格这些短期数据而受累身心了。抓住大逻辑，比如南瑞抓住电力需求和本身竞争优势。比如陕煤抓住优质煤炭紧缺和自身资源禀赋。二，部分朋友还很小，抓住年轻时学习能力强精力旺盛和进取心。</div>
+                
+            </div>
+            
+
+            <div class="post-card">
+                <div>
+                    <span class="post-type-tag tag-post">发帖</span>
+                    <span class="time-tag">2026-06-14 22:48:00</span>
+                </div>
+                <div class="post-text">看到了2021年12月时，一个朋友发给我的截屏，那会有2500个粉丝。那会我叫榆林子洲，后来那个昵称被一位山东的朋友默默占用了。</div>
+                
+            </div>
+            
+
+        <div class="section-title">
+            <span class="dot"></span>
+            今日回帖
+            <span class="section-count">共 1 条</span>
+        </div>
+        
+
+            <div class="reply-card">
+                <div>
+                    <span class="post-type-tag tag-reply">回帖</span>
+                    <span class="time-tag">2026-06-14 23:11:00</span>
+                </div>
+                <div class="post-text">回复 存钱大挖掘机: 可不能跟着我操作。我虽然发帖也就五六年，但我是老股民了，是很灵活的。</div>
+            </div>
+            
+
+    <hr class="divider">
+    <div class="footer">
+        <div class="footer-logo">🔴 XUEQIU TRACKER</div>
+        <div class="footer-text">
+            数据来源：雪球公开页面 · 仅供参考，不构成投资建议<br>
+            持仓信号由 AI 分析推断，不等于真实持仓
+        </div>
+    </div>
+    
+    </div>
+</body>
+</html>
